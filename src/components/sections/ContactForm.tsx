@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { contact } from "@/content/site";
 import { Arrow } from "@/components/ui/SunButton";
 
@@ -209,9 +210,9 @@ export function ContactForm() {
           <label className="flex items-start gap-3 text-sm leading-relaxed">
             <input type="checkbox" name="agree" value="yes" required className="mt-1 size-4 accent-[#ff5a1f]" />
             <span>
-              <a href="/privacy" className="underline underline-offset-4 hover:text-shu" target="_blank">
+              <Link href="/privacy" className="underline underline-offset-4 hover:text-shu" target="_blank">
                 プライバシーポリシー
-              </a>
+              </Link>
               に同意して送信します
             </span>
           </label>
