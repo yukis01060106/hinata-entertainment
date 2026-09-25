@@ -1,0 +1,40 @@
+1:"$Sreact.fragment"
+2:I[97367,["/hinata-entertainment/_next/static/chunks/3fntmmi971322.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+7:I[97367,["/hinata-entertainment/_next/static/chunks/3fntmmi971322.js"],"ViewportBoundary"]
+8:I[97367,["/hinata-entertainment/_next/static/chunks/3fntmmi971322.js"],"MetadataBoundary"]
+6:X
+1f:X
+1f:C
+0:{"buildId":"bhinZ80suEllGhgoA9ibC","data":[{"rsc":["$","$1","c",{"children":[["$","section",null,{"data-sky":"night","className":"px-[var(--gutter)] pt-36 pb-28","children":["$","div",null,{"className":"mx-auto max-w-3xl","children":[["$","p",null,{"className":"label","children":[["$","span",null,{"className":"n","children":"(—)"}],"Privacy Policy"]}],["$","h1",null,{"className":"mt-6 font-mincho text-[clamp(2rem,8vw,3.4rem)] font-extrabold","children":"プライバシーポリシー"}],["$","p",null,{"className":"mt-8 leading-loose text-ink/85","children":["株式会社Rise Tech Solutions","（以下「当社」）は、","HINATA Entertainment","の運営において取得する個人情報を、以下のとおり適切に取り扱います。"]}],["$","div",null,{"className":"mt-12 space-y-10","children":[["$","div","1. 個人情報の取得",{"children":[["$","h2",null,{"className":"font-mincho text-xl font-extrabold","children":"1. 個人情報の取得"}],["$","p",null,{"className":"mt-3 leading-loose whitespace-pre-line text-ink/85","children":"当社は、ライバー応募フォームおよびお問い合わせフォームを通じて、お名前、年齢、お住まいの地域、メールアドレス、電話番号、SNSアカウント、その他ご記入いただいた情報を取得します。"}]]}],["$","div","2. 利用目的",{"children":[["$","h2",null,{"className":"font-mincho text-xl font-extrabold","children":"2. 利用目的"}],["$","p",null,{"className":"mt-3 leading-loose whitespace-pre-line text-ink/85","children":"取得した個人情報は、次の目的の範囲内で利用します。\n・ライバー応募に関する選考、面談のご案内、ご連絡\n・お問い合わせへの回答、ご依頼内容の確認\n・当社サービスに関するご案内"}]]}],["$","div","3. 第三者への提供",{"children":[["$","h2",null,{"className":"font-mincho text-xl font-extrabold","children":"3. 第三者への提供"}],["$","p",null,{"className":"mt-3 leading-loose whitespace-pre-line text-ink/85","children":"法令に基づく場合を除き、ご本人の同意なく個人情報を第三者に提供することはありません。"}]]}],["$","div","4. 安全管理",{"children":[["$","h2",null,{"className":"font-mincho text-xl font-extrabold","children":"4. 安全管理"}],["$","p",null,{"className":"mt-3 leading-loose whitespace-pre-line text-ink/85","children":"当社は、個人情報の漏えい、滅失または毀損を防ぐため、必要かつ適切な安全管理措置を講じます。"}]]}],["$","div","5. 開示・訂正・削除",{"children":[["$","h2",null,{"className":"font-mincho text-xl font-extrabold","children":"5. 開示・訂正・削除"}],["$","p",null,{"className":"mt-3 leading-loose whitespace-pre-line text-ink/85","children":"ご本人から個人情報の開示、訂正、利用停止、削除等のご請求があった場合は、本人確認のうえ、速やかに対応いたします。"}]]}],["$","div","6. お問い合わせ窓口",{"children":[["$","h2",null,{"className":"font-mincho text-xl font-extrabold","children":"6. お問い合わせ窓口"}],["$","p",null,{"className":"mt-3 leading-loose whitespace-pre-line text-ink/85","children":"株式会社Rise Tech Solutions\nHINATA Entertainment 個人情報担当\nお問い合わせフォームよりご連絡ください。"}]]}]]}],["$","p",null,{"className":"mt-16 text-sm text-ink/70","children":"制定日：2026年9月25日"}]]}]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"isPartial":"$@5","staleTime":"$6","varyParams":null},{"rsc":["$","$1","h",{"children":[null,["$","$L7",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","content":"#faf7f2"}],["$","meta","3",{"name":"color-scheme","content":"light"}]]}],["$","div",null,{"hidden":true,"children":["$","$L8",null,{"children":["$","$3",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"プライバシーポリシー｜HINATA Entertainment"}],["$","meta","1",{"name":"description","content":"HINATA Entertainment（運営：株式会社Rise Tech Solutions）の個人情報の取り扱いについて。"}],["$","meta","2",{"name":"application-name","content":"HINATA Entertainment"}],["$","meta","3",{"name":"keywords","content":"熊本 ライバー事務所,九州 ライバー事務所,TikTok LIVE 事務所,TikTok ライバー 募集,ライバー事務所 熊本,ライブ配信 事務所 九州,ショップ配信 ライバー,HINATA Entertainment"}],["$","meta","4",{"name":"robots","content":"noindex, nofollow"}],["$","link","5",{"rel":"canonical","href":"https://yukis01060106.github.io/hinata-entertainment/privacy/"}],["$","meta","6",{"name":"format-detection","content":"telephone=no"}],["$","meta","7",{"property":"og:title","content":"HINATA Entertainment｜熊本・九州のTikTok LIVEライバー事務所"}],["$","meta","8",{"property":"og:description","content":"熊本のライバー事務所「HINATA Entertainment」。TikTok LIVEのギフト配信・ショップ配信ライバーを、熊本・九州から全国へ。未経験OK、専属マネージャーが配信を一からサポートします。九州No.1のライバー事務所を目指して、ライバーを募集中です。"}],["$","meta","9",{"property":"og:url","content":"https://yukis01060106.github.io/hinata-entertainment/"}],["$","meta","10",{"property":"og:site_name","content":"HINATA Entertainment"}],"$L9","$La","$Lb","$Lc","$Ld","$Le","$Lf","$L10","$L11","$L12","$L13","$L14","$L15","$L16","$L17","$L18","$L19","$L1a"]}]}]}],"$L1b"]}],"isPartial":"$@1c","staleTime":"$6","varyParams":null},{"rsc":"$L1d","isPartial":"$@1e","staleTime":"$6","varyParams":"$1f"}],"isUpgradeableISRFallback":false,"a":"$@20","rootVaryParams":null,"needsRuntimeRequest":"$@21"}
+22:I[27201,["/hinata-entertainment/_next/static/chunks/3fntmmi971322.js"],"IconMark"]
+23:I[39756,["/hinata-entertainment/_next/static/chunks/3fntmmi971322.js"],"default"]
+24:I[37457,["/hinata-entertainment/_next/static/chunks/3fntmmi971322.js"],"default"]
+4:null
+9:["$","meta","11",{"property":"og:locale","content":"ja_JP"}]
+a:["$","meta","12",{"property":"og:image","content":"https://yukis01060106.github.io/hinata-entertainment/hinata-entertainment/opengraph-image.jpg?opengraph-image.1vnm01p1m-kwy.jpg"}]
+b:["$","meta","13",{"property":"og:image:type","content":"image/jpeg"}]
+c:["$","meta","14",{"property":"og:image:width","content":"1200"}]
+d:["$","meta","15",{"property":"og:image:height","content":"630"}]
+e:["$","meta","16",{"property":"og:image:alt","content":"HINATA Entertainment｜熊本・九州のTikTok LIVEライバー事務所"}]
+f:["$","meta","17",{"property":"og:type","content":"website"}]
+10:["$","meta","18",{"name":"twitter:card","content":"summary_large_image"}]
+11:["$","meta","19",{"name":"twitter:title","content":"HINATA Entertainment｜熊本・九州のTikTok LIVEライバー事務所"}]
+12:["$","meta","20",{"name":"twitter:description","content":"熊本のライバー事務所「HINATA Entertainment」。TikTok LIVEのギフト配信・ショップ配信ライバーを、熊本・九州から全国へ。未経験OK、専属マネージャーが配信を一からサポートします。九州No.1のライバー事務所を目指して、ライバーを募集中です。"}]
+13:["$","meta","21",{"name":"twitter:image","content":"https://yukis01060106.github.io/hinata-entertainment/hinata-entertainment/twitter-image.jpg?twitter-image.1vnm01p1m-kwy.jpg"}]
+14:["$","meta","22",{"name":"twitter:image:alt","content":"HINATA Entertainment｜熊本・九州のTikTok LIVEライバー事務所"}]
+15:["$","meta","23",{"name":"twitter:image:type","content":"image/jpeg"}]
+16:["$","meta","24",{"name":"twitter:image:width","content":"1200"}]
+17:["$","meta","25",{"name":"twitter:image:height","content":"630"}]
+18:["$","link","26",{"rel":"icon","href":"/hinata-entertainment/icon.svg?icon.41u4lpav0cjdy.svg","sizes":"any","type":"image/svg+xml"}]
+19:["$","link","27",{"rel":"apple-touch-icon","href":"/hinata-entertainment/apple-icon.png?apple-icon.3mhab8i4vh8vn.png","sizes":"180x180","type":"image/png"}]
+1a:["$","$L22","28",{}]
+1b:["$","meta",null,{"name":"next-size-adjust","content":""}]
+1d:["$","$1","c",{"children":[null,["$","$L23",null,{"parallelRouterKey":"children","template":["$","$L24",null,{}]}]]}]
+21:true
+6:300
+6:C
+20:0
+1c:"$undefined"
+1e:"$undefined"
+5:"$undefined"
