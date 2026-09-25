@@ -4,6 +4,7 @@
 # 静的サイトではお問い合わせ送信（/api/contact）は動かないため、Pages 版ではビルドから外す。
 set -euo pipefail
 cd "$(dirname "$0")/.."
+root=$(pwd)
 
 remote=$(git remote get-url origin)
 repo=$(basename -s .git "$remote")
@@ -11,7 +12,7 @@ owner=$(basename "$(dirname "$remote")")
 base="/$repo"
 
 tmp=$(mktemp -d)
-trap 'mv "$tmp/api" src/app/api 2>/dev/null || true; rm -rf "$tmp"' EXIT
+trap 'mv "$tmp/api" "$root/src/app/api" 2>/dev/null || true; rm -rf "$tmp"' EXIT
 mv src/app/api "$tmp/api"
 
 GITHUB_PAGES=1 PAGES_BASE_PATH="$base" NEXT_PUBLIC_SITE_URL="https://$owner.github.io$base" npm run build
