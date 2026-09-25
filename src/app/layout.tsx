@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     description: site.seo.description,
   },
   formatDetection: { telephone: false },
+  robots: site.allowIndex ? { index: true, follow: true } : { index: false, follow: false },
 };
 
 export const viewport: Viewport = {

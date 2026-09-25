@@ -12,7 +12,15 @@ export const site = {
   name: "HINATA Entertainment",
   shortName: "HINATA",
   /** 公開するドメインが決まったら書き換えてください（OGP・サイトマップに使われます） */
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hinata-ent.jp",
+  /** 公開するURL。未設定なら、Vercel で公開したときのURL（○○.vercel.app）を自動で使う */
+  url:
+    process.env.NEXT_PUBLIC_SITE_URL ??
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://hinata-ent.jp"),
+  /**
+   * 検索エンジンに載せるかどうか。本番公開のときに、環境変数 NEXT_PUBLIC_ALLOW_INDEX=1 を設定してください。
+   * 未設定のあいだ（デモ・確認用）は、Google などの検索結果に出ないようにしています。
+   */
+  allowIndex: process.env.NEXT_PUBLIC_ALLOW_INDEX === "1",
   locale: "ja_JP",
   company: "株式会社Rise Tech Solutions",
 

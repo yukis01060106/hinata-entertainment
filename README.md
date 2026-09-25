@@ -76,6 +76,7 @@ gh repo create hinata-entertainment --private --source=. --push
 | 名前 | 内容 |
 |---|---|
 | `NEXT_PUBLIC_SITE_URL` | 公開するURL（例：`https://hinata-ent.jp`）。OGP、サイトマップ、canonical に使われます |
+| `NEXT_PUBLIC_ALLOW_INDEX` | **本番公開のときに `1` にする。** 未設定のあいだは Google などの検索結果に出ません（デモ・確認用） |
 | `RESEND_API_KEY` | フォームの内容をメールで受け取るための、[Resend](https://resend.com) の APIキー |
 | `CONTACT_TO_EMAIL` | 問い合わせを受け取るメールアドレス（カンマ区切りで複数指定できます） |
 | `CONTACT_FROM_EMAIL` | 送信元のアドレス（Resend でドメイン認証したもの。例：`HINATA <info@hinata-ent.jp>`） |
