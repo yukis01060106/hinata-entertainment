@@ -38,6 +38,11 @@ export const metadata: Metadata = {
     description: site.seo.description,
   },
   formatDetection: { telephone: false },
+  // Google Search Console の所有権確認（HTMLタグ方式）。発行された content の値を環境変数に入れる
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
+  category: "entertainment",
   robots: site.allowIndex ? { index: true, follow: true } : { index: false, follow: false },
 };
 
@@ -46,25 +51,53 @@ export const viewport: Viewport = {
   colorScheme: "light",
 };
 
-// 構造化データ（Googleに「熊本のライバー事務所」だと伝える）
+// 構造化データ：Googleに「熊本を拠点に、福岡・九州で活動するライバー事務所」だと伝える
+const areas = ["熊本県", "福岡県", "佐賀県", "長崎県", "大分県", "宮崎県", "鹿児島県"];
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: site.name,
-  alternateName: ["HINATA", "ひなたエンターテインメント"],
-  url: site.url,
-  description: site.seo.description,
-  address: {
-    "@type": "PostalAddress",
-    postalCode: site.address.postalCode,
-    addressRegion: site.address.region,
-    addressLocality: site.address.locality,
-    streetAddress: `${site.address.street} ${site.address.building}`,
-    addressCountry: "JP",
-  },
-  areaServed: ["熊本県", "九州", "日本"],
-  knowsAbout: ["TikTok LIVE", "ライブ配信", "ライバーマネジメント", "ライブコマース"],
-  sameAs: site.sns.map((s) => s.href).filter(Boolean),
+  "@graph": [
+    {
+      "@type": ["Organization", "LocalBusiness"],
+      "@id": `${site.url}/#organization`,
+      name: site.name,
+      alternateName: ["HINATA", "ひなたエンターテインメント", "HINATA Entertainment ライバー事務所"],
+      url: site.url,
+      logo: `${site.url}/icon.svg`,
+      image: `${site.url}/opengraph-image.jpg`,
+      description: site.seo.description,
+      slogan: "熊本から、ライバーが一番輝ける「ひなた」をつくる。",
+      address: {
+        "@type": "PostalAddress",
+        postalCode: site.address.postalCode,
+        addressRegion: site.address.region,
+        addressLocality: site.address.locality,
+        streetAddress: `${site.address.street} ${site.address.building}`,
+        addressCountry: "JP",
+      },
+      geo: { "@type": "GeoCoordinates", latitude: site.address.geo.lat, longitude: site.address.geo.lng },
+      hasMap: site.address.mapUrl,
+      areaServed: [
+        ...areas.map((name) => ({ "@type": "AdministrativeArea", name })),
+        { "@type": "Place", name: "九州" },
+        { "@type": "Country", name: "日本" },
+      ],
+      knowsAbout: ["ライバー事務所", "ライブ配信", "TikTok LIVE", "TikTok Shop", "ライバーマネジメント", "ライブコマース", "ギフト配信", "ショップ配信"],
+      makesOffer: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "TikTok LIVE ライバーマネジメント（ギフト配信）", areaServed: "九州・全国" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "TikTok Shop ライブコマース（ショップ配信）", areaServed: "九州・全国" } },
+      ],
+      sameAs: site.sns.map((s) => s.href).filter(Boolean),
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.name,
+      alternateName: "HINATA ライバー事務所",
+      inLanguage: "ja",
+      publisher: { "@id": `${site.url}/#organization` },
+    },
+  ],
 };
 
 // JS有効の目印と、同じタブで2回目以降はオープニングを省略する処理（描画前に実行）

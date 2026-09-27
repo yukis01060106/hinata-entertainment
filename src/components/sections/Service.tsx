@@ -10,11 +10,11 @@ export function Service() {
   return (
     <section id="service" data-sky="day" className="relative px-[var(--gutter)] py-[clamp(5rem,12vw,10rem)]">
       <div className="mx-auto max-w-7xl">
-        <p className="label" data-reveal="fade">
+        <h2 className="label" data-reveal="fade">
           <span className="n">(03)</span>事業内容
-        </p>
+        </h2>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
-          <Split as="h2" lines={["Service"]} className="display text-[clamp(4.6rem,22vw,15rem)] italic" />
+          <Split as="p" lines={["Service"]} className="display text-[clamp(4.6rem,22vw,15rem)] italic" />
           <p className="max-w-md font-mincho text-[clamp(1.1rem,4.2vw,1.6rem)] leading-relaxed font-extrabold whitespace-pre-line lg:pb-6" data-reveal="fade">
             {service.lead}
           </p>

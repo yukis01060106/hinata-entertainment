@@ -28,23 +28,26 @@ export const site = {
     region: "熊本県",
     locality: "熊本市西区",
     street: "春日1丁目14-1",
+    /** 緯度・経度（Googleマップ・構造化データ用） */
+    geo: { lat: 32.7897, lng: 130.6886 },
     building: "くまもと森都心プラザ2階 XOSS POINT.",
     mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%81%8F%E3%81%BE%E3%82%82%E3%81%A8%E6%A3%AE%E9%83%BD%E5%BF%83%E3%83%97%E3%83%A9%E3%82%B6",
   },
 
   seo: {
-    title: "HINATA Entertainment｜熊本・九州のTikTok LIVE特化ライバー事務所",
+    title: "熊本・福岡・九州のライバー事務所｜TikTok LIVE特化のHINATA Entertainment",
     titleTemplate: "%s｜HINATA Entertainment",
     description:
-      "TikTok LIVEに特化した、熊本のライバー事務所「HINATA Entertainment」。ギフト配信・ショップ配信のTikTok LIVEライバーを、熊本・九州から全国へ。未経験OK、専属マネージャーが配信を一からサポートします。九州No.1のライバー事務所を目指して、ライバーを募集中です。",
+      "熊本・福岡・九州のライバー事務所「HINATA Entertainment」。TikTok LIVEに特化し、ライブ配信のギフト配信・ショップ配信ライバーを募集中です。未経験OK・スマホ1台から、専属マネージャーが配信を一からサポート。熊本を拠点に、九州から全国へ。",
     keywords: [
-      "熊本 ライバー事務所",
-      "九州 ライバー事務所",
-      "TikTok LIVE 事務所",
-      "TikTok LIVE 特化 事務所",
-      "TikTok ライバー 募集",
       "ライバー事務所 熊本",
-      "ライブ配信 事務所 九州",
+      "ライバー事務所 福岡",
+      "ライバー事務所 九州",
+      "ライブ配信 ライバー事務所",
+      "ライブ配信 事務所 熊本",
+      "ライブ配信 事務所 福岡",
+      "TikTok LIVE ライバー事務所",
+      "TikTok ライバー 募集",
       "ショップ配信 ライバー",
       "HINATA Entertainment",
     ],
@@ -85,7 +88,7 @@ export const site = {
 
 export const hero = {
   catch: ["ライバーが、", "一番輝ける場所へ。"],
-  lead: "熊本から、ライバーが一番輝ける「ひなた」をつくる。\nTikTok LIVEに特化したライバー事務所です。",
+  lead: "熊本から、ライバーが一番輝ける「ひなた」をつくる。\nTikTok LIVEに特化した、ライブ配信のライバー事務所です。",
   cta: { label: "ライバー応募", href: "#contact" },
   /** ヒーローで縦に流れる写真（左列・右列）。枚数は自由に増減できます */
   columns: [
@@ -153,7 +156,7 @@ export const about = {
 
 export const marquees = {
   first: ["TikTok LIVE特化", "熊本から、全国へ。", "Live from Kumamoto", "ひなたをつくる。"],
-  second: ["未経験OK", "スマホ1台からはじめる", "Kyushu to Japan", "ライバー募集中"],
+  second: ["未経験OK", "熊本・福岡・九州から", "スマホ1台からはじめる", "ライバー募集中"],
 };
 
 export const service = {
@@ -218,7 +221,7 @@ export const recruit = {
   lead: "特別な才能も、配信の経験もいりません。\n「やってみたい」という気持ちがあれば、光の当て方は私たちが一緒に考えます。",
   points: [
     { big: "未経験OK", body: "配信経験ゼロからでも大丈夫。はじめ方から丁寧にお伝えします。" },
-    { big: "熊本・九州から全国へ", body: "地元に住んだまま、全国のリスナーに届けられます。" },
+    { big: "熊本・福岡・九州から全国へ", body: "九州の地元に住んだまま、全国のリスナーに届けられます。" },
     { big: "スマホ1台で", body: "特別な機材は必要ありません。必要になったら一緒に揃えます。" },
     { big: "専属マネージャー", body: "一人で悩ませません。いつでも相談できる担当がつきます。" },
   ],
@@ -260,8 +263,8 @@ export const faq = [
     a: "厳しいノルマはありません。目標は、マネージャーと相談しながら、無理のない範囲で一緒に決めていきます。",
   },
   {
-    q: "熊本・九州以外に住んでいても応募できますか？",
-    a: "はい、全国どこからでも応募できます。面談やサポートはオンラインでも行っています。",
+    q: "福岡など、熊本以外に住んでいても所属できますか？",
+    a: "はい。熊本・福岡をはじめ九州全域、そして全国どこからでも所属できます。面談や日々のサポートはオンラインでも行っているので、住んでいる場所は気にせずご応募ください。",
   },
   {
     q: "何歳から応募できますか？",
@@ -276,6 +279,7 @@ export const company: { label: string; value: string; link?: { label: string; hr
     value: `〒${site.address.postalCode}\n${site.address.region}${site.address.locality}${site.address.street}\n${site.address.building}`,
     link: { label: "Googleマップで見る", href: site.address.mapUrl },
   },
+  { label: "活動エリア", value: "熊本を拠点に、福岡・九州全域\n全国どこからでも、オンラインで所属できます" },
   { label: "事業内容", value: "TikTok LIVEライバーのマネジメント\nギフト配信・ショップ配信ライバーの育成\nライブコマースの企画・運営" },
   { label: "お問い合わせ", value: "本ページのお問い合わせフォームよりご連絡ください" },
 ];

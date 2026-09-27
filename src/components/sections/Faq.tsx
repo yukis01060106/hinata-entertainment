@@ -19,10 +19,10 @@ export function Faq() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <p className="label" data-reveal="fade">
-            <span className="n">(06)</span>よくある質問
-          </p>
-          <Split as="h2" lines={["Q&A"]} className="display mt-6 text-[clamp(3.6rem,15vw,7rem)] italic" />
+          <h2 className="label" data-reveal="fade">
+          <span className="n">(06)</span>よくある質問
+        </h2>
+          <Split as="p" lines={["Q&A"]} className="display mt-6 text-[clamp(3.6rem,15vw,7rem)] italic" />
           <p className="mt-6 max-w-xs text-sm leading-loose text-ink/75" data-reveal="fade">
             応募の前に気になることを、まとめました。ここにない質問も、お気軽にどうぞ。
           </p>

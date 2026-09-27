@@ -7,11 +7,11 @@ export function Livers() {
   return (
     <section id="livers" data-sky="noon" className="relative px-[var(--gutter)] py-[clamp(5rem,12vw,10rem)]">
       <div className="mx-auto max-w-7xl">
-        <p className="label" data-reveal="fade">
+        <h2 className="label" data-reveal="fade">
           <span className="n">(04)</span>所属ライバー
-        </p>
+        </h2>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
-          <Split as="h2" lines={["Livers"]} className="display text-[clamp(4.6rem,22vw,15rem)]" />
+          <Split as="p" lines={["Livers"]} className="display text-[clamp(4.6rem,22vw,15rem)]" />
           <p className="max-w-sm text-sm leading-loose text-ink/80 md:text-base lg:pb-6" data-reveal="fade">
             熊本・九州から、全国のリスナーへ。
             <br />
@@ -26,7 +26,7 @@ export function Livers() {
               <div data-reveal="fade" style={{ "--delay": `${(i % 3) * 0.1}s` } as CSSProperties}>
                 <div className="arch relative" data-shine>
                   <div className="photo film arch aspect-[3/4]">
-                    <Image src={l.image} alt={`${l.nameJa}（${l.nameEn}）`} fill sizes="(min-width: 1024px) 30vw, 46vw" className="object-cover" />
+                    <Image src={l.image} alt={`HINATA Entertainment 所属ライバー ${l.nameJa}（${l.nameEn}）`} fill sizes="(min-width: 1024px) 30vw, 46vw" className="object-cover" />
                   </div>
                 </div>
                 <p className="cap mt-4 flex justify-between">

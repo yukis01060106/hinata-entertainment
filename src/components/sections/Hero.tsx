@@ -69,8 +69,8 @@ export function Hero() {
       <div className="relative z-10 flex h-full flex-col justify-end px-[var(--gutter)] pb-[max(2.2rem,env(safe-area-inset-bottom))] lg:w-[54%] lg:justify-center lg:pb-[10vh]">
         <h1>
           <span className="label mb-4 text-ink/85" data-reveal="fade" style={d("var(--intro-delay)")}>
-            <span className="n">(熊本)</span>
-            TikTok LIVE 特化のライバー事務所
+            <span className="n">(熊本・九州)</span>
+            TikTok LIVE特化のライバー事務所
           </span>
           <Split
             as="span"
