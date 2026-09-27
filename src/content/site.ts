@@ -87,8 +87,8 @@ export const hero = {
   cta: { label: "ライバー応募", href: "#contact" },
   /** ヒーローで縦に流れる写真（左列・右列）。枚数は自由に増減できます */
   columns: [
-    ["/images/hero/hero-01.jpg", "/images/hero/hero-02.jpg", "/images/hero/hero-03.jpg"],
-    ["/images/hero/hero-04.jpg", "/images/hero/hero-05.jpg", "/images/hero/hero-06.jpg"],
+    ["/images/livers/member-01.jpg", "/images/livers/member-04.jpg", "/images/livers/member-09.jpg", "/images/livers/member-06.jpg", "/images/livers/member-11.jpg", "/images/livers/member-03.jpg"],
+    ["/images/livers/member-05.jpg", "/images/livers/member-08.jpg", "/images/livers/member-02.jpg", "/images/livers/member-07.jpg", "/images/livers/member-10.jpg"],
   ],
 };
 
@@ -171,16 +171,21 @@ export type Liver = {
 };
 
 /**
- * 所属ライバー（仮）。配列の順番がそのまま表示順になります。
- * ※ 今の写真は Unsplash の仮素材で、写っているのは事務所と無関係の方です。公開前に必ず差し替えてください。
+ * 所属ライバー。配列の順番がそのまま表示順になります。
+ * ※ 今の写真・名前はイメージ用です（写真はAIで生成した架空の人物）。実際の所属ライバーが決まったら差し替えてください。
  */
 export const livers: Liver[] = [
-  { nameEn: "AOI", nameJa: "あおい", genre: "GIFT", comment: "歌とおしゃべりで、夜をあたためます。", image: "/images/livers/liver-01.jpg" },
-  { nameEn: "HARUKA", nameJa: "はるか", genre: "SHOP", comment: "熊本の美味しいもの、全力で紹介します。", image: "/images/livers/liver-02.jpg" },
-  { nameEn: "REN", nameJa: "れん", genre: "GIFT", comment: "ゲーム実況と雑談がメインです。", image: "/images/livers/liver-03.jpg" },
-  { nameEn: "MIO", nameJa: "みお", genre: "SHOP", comment: "コスメとファッションが大好き。", image: "/images/livers/liver-04.jpg" },
-  { nameEn: "SORA", nameJa: "そら", genre: "GIFT", comment: "阿蘇育ち。朝配信やってます。", image: "/images/livers/liver-05.jpg" },
-  { nameEn: "HINA", nameJa: "ひな", genre: "GIFT", comment: "ダンスと笑顔を届けます！", image: "/images/livers/liver-06.jpg" },
+  { nameEn: "HINANO", nameJa: "ひなの", genre: "GIFT", comment: "笑い声の大きさには自信あり。毎晩にぎやかに配信中！", image: "/images/livers/member-01.jpg" },
+  { nameEn: "SAKI", nameJa: "さき", genre: "SHOP", comment: "すっぴん肌の味方。ナチュラルコスメを本音でレビューします。", image: "/images/livers/member-02.jpg" },
+  { nameEn: "RIKO", nameJa: "りこ", genre: "SHOP", comment: "元アパレル店員。着回しとコーデ提案が得意です。", image: "/images/livers/member-03.jpg" },
+  { nameEn: "AIRI", nameJa: "あいり", genre: "GIFT", comment: "夜の歌枠で、一日の終わりに寄り添います。", image: "/images/livers/member-04.jpg" },
+  { nameEn: "MAYU", nameJa: "まゆ", genre: "SHOP", comment: "熊本の美味しいもの、全力で紹介します。", image: "/images/livers/member-05.jpg" },
+  { nameEn: "TAKUMI", nameJa: "たくみ", genre: "GIFT", comment: "ゲーム実況と雑談がメイン。初見さん大歓迎です。", image: "/images/livers/member-06.jpg" },
+  { nameEn: "YUTO", nameJa: "ゆうと", genre: "GIFT", comment: "深夜のゆる雑談枠。眠れない夜に気軽に来てね。", image: "/images/livers/member-07.jpg" },
+  { nameEn: "MOE", nameJa: "もえ", genre: "GIFT", comment: "寝る前のまったり配信。おやすみまで一緒にいます。", image: "/images/livers/member-08.jpg" },
+  { nameEn: "CHIHIRO", nameJa: "ちひろ", genre: "SHOP", comment: "毎日使えるプチプラ雑貨を、使い心地まで紹介します。", image: "/images/livers/member-09.jpg" },
+  { nameEn: "MIO", nameJa: "みお", genre: "GIFT", comment: "阿蘇育ち。朝の配信で、元気をおすそわけします。", image: "/images/livers/member-10.jpg" },
+  { nameEn: "YUI", nameJa: "ゆい", genre: "GIFT", comment: "配信歴3か月。未経験から、毎日楽しく続けています。", image: "/images/livers/member-11.jpg" },
 ];
 
 export const recruit = {

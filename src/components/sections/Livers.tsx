@@ -56,6 +56,39 @@ export function Livers() {
               </div>
             </li>
           ))}
+          {/* 最後の枠：次のライバーを募集（並びの端数もここで埋まる） */}
+          <li className="card group">
+            <div data-reveal="fade" style={{ "--delay": `${(livers.length % 3) * 0.1}s` } as CSSProperties}>
+              <a href="#contact" data-contact-kind="apply" className="block" aria-label="ライバーに応募する">
+                <div className="arch grid aspect-[3/4] place-items-center border border-dashed border-ink/30 bg-paper/50 px-4 text-center transition-colors group-hover:border-shu group-hover:bg-shu/10">
+                  <div>
+                    <span aria-hidden="true" className="sun mx-auto block size-10 sm:size-14" />
+                    <p className="mt-5 font-serif text-[clamp(1.6rem,5vw,2.6rem)] leading-none italic">Next is you.</p>
+                    <p className="mt-3 font-mincho text-sm font-extrabold sm:text-base">
+                      <span className="inline-block">あなたの席、</span>
+                      <span className="inline-block">あいています</span>
+                    </p>
+                  </div>
+                </div>
+                <p className="cap mt-4 flex justify-between">
+                  <span>No.{String(livers.length + 1).padStart(2, "0")}</span>
+                  <span className="text-deep">Now recruiting</span>
+                </p>
+                <div className="mt-2 flex items-end justify-between gap-3 border-b border-ink/15 pb-3">
+                  <div>
+                    <p className="font-serif text-[clamp(1.6rem,6vw,2.6rem)] leading-none">You</p>
+                    <p className="mt-1.5 text-xs tracking-[0.2em] text-ink/70">あなた</p>
+                  </div>
+                  <span className="grid size-9 shrink-0 place-items-center rounded-full border border-ink/25 transition-colors group-hover:border-shu group-hover:bg-shu">
+                    <svg width="14" height="8" viewBox="0 0 18 10" fill="none" aria-hidden="true">
+                      <path d="M0 5h16M12 1l4 4-4 4" stroke="currentColor" strokeWidth="1.4" />
+                    </svg>
+                  </span>
+                </div>
+                <p className="mt-3 text-xs leading-relaxed text-ink/80 sm:text-sm">未経験から、HINATAで一緒にはじめませんか？</p>
+              </a>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
