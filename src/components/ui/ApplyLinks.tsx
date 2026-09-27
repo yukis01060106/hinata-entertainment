@@ -40,10 +40,10 @@ const icons = {
 /** 応募の窓口一覧。URLが空のものは出さない。フォームは常に表示 */
 export function getChannels(): Channel[] {
   const all: Channel[] = [
-    { key: "line", label: "LINEで応募", short: "LINE", note: "友だち追加して、メッセージを送るだけ。質問からでもOK。", href: site.apply.line, icon: icons.line, external: true },
+    { key: "line", label: "LINEで応募", short: "LINE", note: "友だち追加して、メッセージを送るだけ。質問だけでもOKです。", href: site.apply.line, icon: icons.line, external: true },
     { key: "instagram", label: "InstagramのDMで応募", short: "Instagram", note: "DMで「応募したい」と送ってください。", href: site.apply.instagram, icon: icons.instagram, external: true },
     { key: "tiktok", label: "TikTokのDMで応募", short: "TikTok", note: "いつも使っているTikTokから、そのまま応募できます。", href: site.apply.tiktok, icon: icons.tiktok, external: true },
-    { key: "form", label: "フォームで応募", short: "フォーム", note: "1分で完了。配信の経験や希望も伝えられます。", href: "#contact", icon: icons.form, external: false },
+    { key: "form", label: "フォームで応募", short: "フォーム", note: "1分で完了。配信の経験やご希望もお伝えいただけます。", href: "#contact", icon: icons.form, external: false },
   ];
   return all.filter((c) => c.href);
 }

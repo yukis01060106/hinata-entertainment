@@ -111,7 +111,7 @@ export function ContactForm() {
         <p className="mt-4 text-sm leading-loose text-ink/80">
           内容を確認のうえ、担当者より3営業日以内にご連絡いたします。
           <br />
-          あなたの「ひなた」を、一緒につくれることを楽しみにしています。
+          お会いできるのを楽しみにしています。
         </p>
         <button type="button" onClick={() => setStatus("idle")} className="mt-8 text-sm underline underline-offset-4 hover:text-shu">
           フォームに戻る

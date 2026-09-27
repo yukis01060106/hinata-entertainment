@@ -15,7 +15,7 @@ export function Livers() {
           <p className="max-w-sm text-sm leading-loose text-ink/80 md:text-base lg:pb-6" data-reveal="fade">
             熊本・九州から、全国のリスナーへ。
             <br />
-            HINATAに所属するライバーたちです。
+            HINATAに所属しているライバーを紹介します。
           </p>
         </div>
 
@@ -85,7 +85,7 @@ export function Livers() {
                     </svg>
                   </span>
                 </div>
-                <p className="mt-3 text-xs leading-relaxed text-ink/80 sm:text-sm">未経験から、HINATAで一緒にはじめませんか？</p>
+                <p className="mt-3 text-xs leading-relaxed text-ink/80 sm:text-sm">未経験でも大丈夫。HINATAで一緒に始めませんか？</p>
               </a>
             </div>
           </li>

@@ -24,7 +24,7 @@ export function Faq() {
         </h2>
           <Split as="p" lines={["Q&A"]} className="display mt-6 text-[clamp(3.6rem,15vw,7rem)] italic" />
           <p className="mt-6 max-w-xs text-sm leading-loose text-ink/75" data-reveal="fade">
-            応募の前に気になることを、まとめました。ここにない質問も、お気軽にどうぞ。
+            応募の前によくいただく質問をまとめました。ここにない質問も、お気軽にお問い合わせください。
           </p>
         </div>
 
