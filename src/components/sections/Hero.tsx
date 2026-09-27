@@ -2,7 +2,7 @@ import Image from "next/image";
 import type { CSSProperties } from "react";
 import { hero } from "@/content/site";
 import { Split } from "@/components/ui/Split";
-import { ApplyLinks } from "@/components/ui/ApplyLinks";
+import { ApplyLinks, hasDmChannels } from "@/components/ui/ApplyLinks";
 import { SunSticker } from "@/components/ui/SunSticker";
 
 function PhotoColumn({ images, direction, preloadFirst }: { images: string[]; direction: "up" | "down"; preloadFirst?: boolean }) {
@@ -84,13 +84,13 @@ export function Hero() {
         </p>
         <div className="mt-6 flex items-end justify-between gap-6" data-reveal="fade" style={d("calc(var(--intro-delay) + 1s)")}>
           <div className="w-full sm:w-auto">
-            <p className="cap mb-2.5">Apply — 応募はお好きな方法で</p>
+            <p className="cap mb-2.5">{hasDmChannels() ? "Apply — 応募はお好きな方法で" : "Apply — 1分で応募できます"}</p>
             <ApplyLinks />
           </div>
           <p className="cap hidden shrink-0 text-right sm:block">
             Kumamoto, Japan
             <br />
-            32.80°N 130.71°E
+            32.79°N 130.69°E
           </p>
         </div>
       </div>

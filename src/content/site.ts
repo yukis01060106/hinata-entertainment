@@ -11,7 +11,6 @@
 export const site = {
   name: "HINATA Entertainment",
   shortName: "HINATA",
-  /** 公開するドメインが決まったら書き換えてください（OGP・サイトマップに使われます） */
   /** 公開するURL。未設定なら、Vercel で公開したときのURL（○○.vercel.app）を自動で使う */
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
@@ -23,6 +22,16 @@ export const site = {
   allowIndex: process.env.NEXT_PUBLIC_ALLOW_INDEX === "1",
   locale: "ja_JP",
   company: "株式会社Rise Tech Solutions",
+
+  /** 所在地。会社概要・構造化データ（Google向け）に使われます */
+  address: {
+    postalCode: "860-0047",
+    region: "熊本県",
+    locality: "熊本市西区",
+    street: "春日1丁目14-1",
+    building: "くまもと森都心プラザ2階 XOSS POINT.",
+    mapUrl: "https://www.google.com/maps/search/?api=1&query=%E3%81%8F%E3%81%BE%E3%82%82%E3%81%A8%E6%A3%AE%E9%83%BD%E5%BF%83%E3%83%97%E3%83%A9%E3%82%B6",
+  },
 
   seo: {
     title: "HINATA Entertainment｜熊本・九州のTikTok LIVEライバー事務所",
@@ -43,21 +52,22 @@ export const site = {
 
   /**
    * ライバー応募の窓口。ヒーロー・Recruit・スマホ下部のボタンに使われます。
-   * それぞれ、事務所のアカウントのURLに書き換えてください（空 "" にすると、そのボタンは非表示になります）。
+   * 事務所のアカウントができたら、URLを入れてください（空 "" のあいだは、そのボタンは表示されません）。
    *   LINE      … 公式LINEの友だち追加URL（例：https://lin.ee/xxxxxxx）
    *   Instagram … 事務所のアカウントURL（例：https://www.instagram.com/hinata_ent/）
    *   TikTok    … 事務所のアカウントURL（例：https://www.tiktok.com/@hinata_ent）
    */
   apply: {
-    line: "https://line.me/",
-    instagram: "https://www.instagram.com/",
-    tiktok: "https://www.tiktok.com/",
+    line: "",
+    instagram: "",
+    tiktok: "",
   },
 
+  /** フッターに並ぶSNS。URLが空のものは表示されません */
   sns: [
-    { label: "TikTok", href: "https://www.tiktok.com/" },
-    { label: "Instagram", href: "https://www.instagram.com/" },
-    { label: "X", href: "https://x.com/" },
+    { label: "TikTok", href: "" },
+    { label: "Instagram", href: "" },
+    { label: "X", href: "" },
   ],
 
   nav: [
@@ -165,12 +175,12 @@ export type Liver = {
  * ※ 今の写真は Unsplash の仮素材で、写っているのは事務所と無関係の方です。公開前に必ず差し替えてください。
  */
 export const livers: Liver[] = [
-  { nameEn: "AOI", nameJa: "あおい", genre: "GIFT", comment: "歌とおしゃべりで、夜をあたためます。", image: "/images/livers/liver-01.jpg", tiktok: "https://www.tiktok.com/" },
-  { nameEn: "HARUKA", nameJa: "はるか", genre: "SHOP", comment: "熊本の美味しいもの、全力で紹介します。", image: "/images/livers/liver-02.jpg", tiktok: "https://www.tiktok.com/" },
-  { nameEn: "REN", nameJa: "れん", genre: "GIFT", comment: "ゲーム実況と雑談がメインです。", image: "/images/livers/liver-03.jpg", tiktok: "https://www.tiktok.com/" },
-  { nameEn: "MIO", nameJa: "みお", genre: "SHOP", comment: "コスメとファッションが大好き。", image: "/images/livers/liver-04.jpg", tiktok: "https://www.tiktok.com/" },
-  { nameEn: "SORA", nameJa: "そら", genre: "GIFT", comment: "阿蘇育ち。朝配信やってます。", image: "/images/livers/liver-05.jpg", tiktok: "https://www.tiktok.com/" },
-  { nameEn: "HINA", nameJa: "ひな", genre: "GIFT", comment: "ダンスと笑顔を届けます！", image: "/images/livers/liver-06.jpg", tiktok: "https://www.tiktok.com/" },
+  { nameEn: "AOI", nameJa: "あおい", genre: "GIFT", comment: "歌とおしゃべりで、夜をあたためます。", image: "/images/livers/liver-01.jpg" },
+  { nameEn: "HARUKA", nameJa: "はるか", genre: "SHOP", comment: "熊本の美味しいもの、全力で紹介します。", image: "/images/livers/liver-02.jpg" },
+  { nameEn: "REN", nameJa: "れん", genre: "GIFT", comment: "ゲーム実況と雑談がメインです。", image: "/images/livers/liver-03.jpg" },
+  { nameEn: "MIO", nameJa: "みお", genre: "SHOP", comment: "コスメとファッションが大好き。", image: "/images/livers/liver-04.jpg" },
+  { nameEn: "SORA", nameJa: "そら", genre: "GIFT", comment: "阿蘇育ち。朝配信やってます。", image: "/images/livers/liver-05.jpg" },
+  { nameEn: "HINA", nameJa: "ひな", genre: "GIFT", comment: "ダンスと笑顔を届けます！", image: "/images/livers/liver-06.jpg" },
 ];
 
 export const recruit = {
@@ -190,7 +200,6 @@ export const recruit = {
   ],
 };
 
-/** 会社概要。「（仮）」の項目は確定したら書き換えてください */
 /**
  * よくある質問。Googleの検索結果にも表示されることがあります。
  * ※ 報酬・費用・ノルマなどは、実際の契約条件に合わせて必ず書き換えてください。
@@ -226,10 +235,14 @@ export const faq = [
   },
 ];
 
-export const company = [
+export const company: { label: string; value: string; link?: { label: string; href: string } }[] = [
   { label: "事務所名", value: "HINATA Entertainment" },
   { label: "運営会社", value: "株式会社Rise Tech Solutions" },
-  { label: "所在地", value: "〒860-0000 熊本県熊本市（仮）" },
+  {
+    label: "所在地",
+    value: `〒${site.address.postalCode}\n${site.address.region}${site.address.locality}${site.address.street}\n${site.address.building}`,
+    link: { label: "Googleマップで見る", href: site.address.mapUrl },
+  },
   { label: "事業内容", value: "TikTok LIVEライバーのマネジメント\nギフト配信・ショップ配信ライバーの育成\nライブコマースの企画・運営" },
   { label: "お問い合わせ", value: "本ページのお問い合わせフォームよりご連絡ください" },
 ];

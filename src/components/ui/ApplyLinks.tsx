@@ -48,6 +48,11 @@ export function getChannels(): Channel[] {
   return all.filter((c) => c.href);
 }
 
+/** LINE・Instagram・TikTok のどれかが設定されているか（DMで応募できるか） */
+export function hasDmChannels() {
+  return getChannels().some((c) => c.external);
+}
+
 function linkProps(c: Channel) {
   return c.external
     ? { href: c.href, target: "_blank", rel: "noopener noreferrer" }
@@ -85,7 +90,7 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
 
   if (variant === "cards") {
     return (
-      <ul className={`grid gap-3 sm:grid-cols-2 lg:grid-cols-4 ${className}`}>
+      <ul className={`grid gap-3 ${channels.length === 1 ? "mx-auto max-w-md" : channels.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-4"} ${className}`}>
         {channels.map((c) => (
           <li key={c.key}>
             <a
@@ -113,7 +118,7 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
   }
 
   return (
-    <ul className={`grid grid-cols-2 gap-2 sm:flex sm:flex-wrap ${className}`}>
+    <ul className={`grid gap-2 sm:flex sm:flex-wrap ${channels.length === 1 ? "grid-cols-1" : "grid-cols-2"} ${className}`}>
       {channels.map((c) => (
         <li key={c.key}>
           <a
@@ -121,7 +126,7 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
             className="flex items-center justify-center gap-2 rounded-full border border-ink/25 bg-paper/70 px-4 py-2.5 text-[0.8rem] font-bold tracking-[0.08em] transition-colors hover:border-shu hover:bg-shu sm:justify-start [&_svg]:size-4"
           >
             {c.icon}
-            {c.short}
+            {channels.length === 1 ? c.label : c.short}
           </a>
         </li>
       ))}

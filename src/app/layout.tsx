@@ -55,10 +55,17 @@ const jsonLd = {
   url: site.url,
   description: site.seo.description,
   parentOrganization: { "@type": "Organization", name: site.company },
-  address: { "@type": "PostalAddress", addressRegion: "熊本県", addressCountry: "JP" },
+  address: {
+    "@type": "PostalAddress",
+    postalCode: site.address.postalCode,
+    addressRegion: site.address.region,
+    addressLocality: site.address.locality,
+    streetAddress: `${site.address.street} ${site.address.building}`,
+    addressCountry: "JP",
+  },
   areaServed: ["熊本県", "九州", "日本"],
   knowsAbout: ["TikTok LIVE", "ライブ配信", "ライバーマネジメント", "ライブコマース"],
-  sameAs: site.sns.map((s) => s.href),
+  sameAs: site.sns.map((s) => s.href).filter(Boolean),
 };
 
 // JS有効の目印と、同じタブで2回目以降はオープニングを省略する処理（描画前に実行）

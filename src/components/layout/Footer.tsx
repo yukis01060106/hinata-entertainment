@@ -24,7 +24,7 @@ export function Footer() {
           </Link>
         </nav>
         <ul className="flex gap-5 text-sm">
-          {site.sns.map((s) => (
+          {site.sns.filter((s) => s.href).map((s) => (
             <li key={s.label}>
               <a href={s.href} target="_blank" rel="noopener noreferrer" className="text-ink/80 hover:text-shu">
                 {s.label}

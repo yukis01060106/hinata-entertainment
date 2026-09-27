@@ -6,6 +6,9 @@ import { contact } from "@/content/site";
 import { Arrow } from "@/components/ui/SunButton";
 
 type Kind = "apply" | "business";
+
+/** GitHub Pages のデモ（静的サイト）では送信先のサーバーがないため、送信せずに案内だけ出す */
+const isStaticDemo = Boolean(process.env.NEXT_PUBLIC_BASE_PATH);
 type Status = "idle" | "sending" | "done" | "error";
 
 function Field({ label, name, required, type = "text", ...rest }: { label: string; name: string; required?: boolean; type?: string } & React.InputHTMLAttributes<HTMLInputElement>) {
@@ -75,6 +78,11 @@ export function ContactForm() {
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
+    if (isStaticDemo) {
+      setStatus("error");
+      setMessage("このページは確認用のデモのため、送信はできません（入力内容は送られていません）。");
+      return;
+    }
     setStatus("sending");
     setMessage("");
     try {

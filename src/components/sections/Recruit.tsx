@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { recruit } from "@/content/site";
 import { Split } from "@/components/ui/Split";
-import { ApplyLinks } from "@/components/ui/ApplyLinks";
+import { ApplyLinks, hasDmChannels } from "@/components/ui/ApplyLinks";
 
 export function Recruit() {
   return (
@@ -65,7 +65,7 @@ export function Recruit() {
           {/* 応募方法：好きな窓口を選べる */}
           <div className="mt-24 lg:mt-32" data-reveal="fade">
             <h3 className="text-center font-mincho text-[clamp(1.6rem,6vw,2.6rem)] font-extrabold">応募方法</h3>
-            <p className="mt-3 text-center text-sm leading-relaxed">いちばん気軽な方法で、声をかけてください。</p>
+            <p className="mt-3 text-center text-sm leading-relaxed">{hasDmChannels() ? "いちばん気軽な方法で、声をかけてください。" : "フォームから1分で応募できます。質問だけでも大丈夫です。"}</p>
             <ApplyLinks variant="cards" tone="onColor" className="mt-10" />
           </div>
         </div>
