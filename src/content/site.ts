@@ -33,14 +33,15 @@ export const site = {
   },
 
   seo: {
-    title: "HINATA Entertainment｜熊本・九州のTikTok LIVEライバー事務所",
+    title: "HINATA Entertainment｜熊本・九州のTikTok LIVE特化ライバー事務所",
     titleTemplate: "%s｜HINATA Entertainment",
     description:
-      "熊本のライバー事務所「HINATA Entertainment」。TikTok LIVEのギフト配信・ショップ配信ライバーを、熊本・九州から全国へ。未経験OK、専属マネージャーが配信を一からサポートします。九州No.1のライバー事務所を目指して、ライバーを募集中です。",
+      "TikTok LIVEに特化した、熊本のライバー事務所「HINATA Entertainment」。ギフト配信・ショップ配信のTikTok LIVEライバーを、熊本・九州から全国へ。未経験OK、専属マネージャーが配信を一からサポートします。九州No.1のライバー事務所を目指して、ライバーを募集中です。",
     keywords: [
       "熊本 ライバー事務所",
       "九州 ライバー事務所",
       "TikTok LIVE 事務所",
+      "TikTok LIVE 特化 事務所",
       "TikTok ライバー 募集",
       "ライバー事務所 熊本",
       "ライブ配信 事務所 九州",
@@ -71,6 +72,7 @@ export const site = {
   ],
 
   nav: [
+    { label: "TikTok LIVE", ja: "TikTok LIVE", href: "#tiktok-live" },
     { label: "About", ja: "名前の由来", href: "#about" },
     { label: "Service", ja: "事業内容", href: "#service" },
     { label: "Livers", ja: "所属ライバー", href: "#livers" },
@@ -83,12 +85,35 @@ export const site = {
 
 export const hero = {
   catch: ["ライバーが、", "一番輝ける場所へ。"],
-  lead: "熊本から、ライバーが一番輝ける「ひなた」をつくる。\nTikTok LIVEのライバー事務所です。",
+  lead: "熊本から、ライバーが一番輝ける「ひなた」をつくる。\nTikTok LIVEに特化したライバー事務所です。",
   cta: { label: "ライバー応募", href: "#contact" },
   /** ヒーローで縦に流れる写真（左列・右列）。枚数は自由に増減できます */
   columns: [
     ["/images/livers/member-01.jpg", "/images/livers/member-04.jpg", "/images/livers/member-09.jpg", "/images/livers/member-06.jpg", "/images/livers/member-11.jpg", "/images/livers/member-03.jpg"],
     ["/images/livers/member-05.jpg", "/images/livers/member-08.jpg", "/images/livers/member-02.jpg", "/images/livers/member-07.jpg", "/images/livers/member-10.jpg"],
+  ],
+};
+
+/** ヒーロー直後の「なぜTikTok LIVEなのか」。事務所がTikTok LIVEに特化していることを伝える */
+export const tiktokLive = {
+  heading: ["TikTok LIVEに、", "ぜんぶ注ぐ。"],
+  lead: "HINATAは、TikTok LIVEに特化したライバー事務所です。\nひとつのプラットフォームに集中するから、ノウハウも、応援も、深く届けられます。",
+  reasons: [
+    {
+      en: "Discover",
+      title: "おすすめで、見つけてもらえる",
+      body: "TikTokは、フォロワーが少ないうちから「おすすめ」にライブが表示されるチャンスがあります。はじめての配信から、新しいリスナーと出会えます。",
+    },
+    {
+      en: "Gift & Shop",
+      title: "ギフトとショップ、ふたつの収益",
+      body: "リスナーからの応援「ギフト」と、TikTok Shopでの商品販売。ひとつのアプリで、自分に合う稼ぎ方を選べます。",
+    },
+    {
+      en: "Specialist",
+      title: "特化しているから、深く支えられる",
+      body: "イベントやランキングの攻略、配信の見せ方、伸びる時間帯まで。TikTok LIVEに集中して積み上げたノウハウを、一人ひとりに注ぎます。",
+    },
   ],
 };
 
@@ -127,12 +152,12 @@ export const about = {
 };
 
 export const marquees = {
-  first: ["熊本から、全国へ。", "Live from Kumamoto", "ひなたをつくる。", "TikTok LIVE"],
+  first: ["TikTok LIVE特化", "熊本から、全国へ。", "Live from Kumamoto", "ひなたをつくる。"],
   second: ["未経験OK", "スマホ1台からはじめる", "Kyushu to Japan", "ライバー募集中"],
 };
 
 export const service = {
-  lead: "ギフト配信と、ショップ配信。\nふたつの光で、ライバーの「好き」と「得意」を仕事にします。",
+  lead: "TikTok LIVEの、ギフト配信とショップ配信。\nふたつの光で、ライバーの「好き」と「得意」を仕事にします。",
   pillars: [
     {
       key: "gift",
@@ -213,6 +238,10 @@ export const faq = [
   {
     q: "配信の経験がまったくなくても大丈夫ですか？",
     a: "大丈夫です。所属ライバーの多くが未経験からのスタートです。配信の始め方、話し方、配信時間の決め方まで、専属マネージャーが一緒に考えます。",
+  },
+  {
+    q: "TikTok以外のアプリでも配信できますか？",
+    a: "HINATAはTikTok LIVEに特化した事務所で、サポートもTikTok LIVEを中心に行っています。ほかのアプリでの配信経験がある方も大歓迎です。詳しくは面談でご相談ください。",
   },
   {
     q: "顔を出さずに配信することはできますか？",

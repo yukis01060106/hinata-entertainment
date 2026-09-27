@@ -14,7 +14,7 @@ export function About() {
     <section id="about" data-sky="sunrise" className="relative overflow-hidden px-[var(--gutter)] pt-[clamp(6rem,16vw,12rem)] pb-[clamp(4rem,10vw,8rem)]">
       <div className="relative mx-auto max-w-7xl">
         <p className="label" data-reveal="fade">
-          <span className="n">(01)</span>名前の由来
+          <span className="n">(02)</span>名前の由来
         </p>
 
         {/* 見出し：縦書きの巨大な「日向」 */}

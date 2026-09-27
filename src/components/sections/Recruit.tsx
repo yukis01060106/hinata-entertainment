@@ -9,7 +9,7 @@ export function Recruit() {
       <div className="dusk relative overflow-hidden px-[var(--gutter)] pt-[clamp(6rem,18vw,12rem)] pb-[clamp(5rem,12vw,9rem)]">
         <div className="relative mx-auto max-w-6xl">
           <p className="label justify-center" data-reveal="fade">
-            <span className="n">(04)</span>ライバー募集
+            <span className="n">(05)</span>ライバー募集
           </p>
           <Split
             as="h2"

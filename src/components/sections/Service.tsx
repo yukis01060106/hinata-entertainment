@@ -11,7 +11,7 @@ export function Service() {
     <section id="service" data-sky="day" className="relative px-[var(--gutter)] py-[clamp(5rem,12vw,10rem)]">
       <div className="mx-auto max-w-7xl">
         <p className="label" data-reveal="fade">
-          <span className="n">(02)</span>事業内容
+          <span className="n">(03)</span>事業内容
         </p>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
           <Split as="h2" lines={["Service"]} className="display text-[clamp(4.6rem,22vw,15rem)] italic" />

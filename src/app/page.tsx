@@ -1,5 +1,6 @@
 import { marquees } from "@/content/site";
 import { Hero } from "@/components/sections/Hero";
+import { TiktokLive } from "@/components/sections/TiktokLive";
 import { About } from "@/components/sections/About";
 import { Service } from "@/components/sections/Service";
 import { Livers } from "@/components/sections/Livers";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <TiktokLive />
       <About />
       <Marquee items={marquees.first} />
       <Service />

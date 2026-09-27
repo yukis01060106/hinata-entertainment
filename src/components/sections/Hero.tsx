@@ -70,7 +70,7 @@ export function Hero() {
         <h1>
           <span className="label mb-4 text-ink/85" data-reveal="fade" style={d("var(--intro-delay)")}>
             <span className="n">(熊本)</span>
-            TikTok LIVE ライバー事務所
+            TikTok LIVE 特化のライバー事務所
           </span>
           <Split
             as="span"
