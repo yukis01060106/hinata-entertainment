@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ApplyLinks, hasDmChannels } from "@/components/ui/ApplyLinks";
+import { ApplyLinks, dmChannelNames, hasDmChannels } from "@/components/ui/ApplyLinks";
 
 /**
  * スマホ用：画面下に固定の応募バー（LINE・Instagram・TikTok・フォーム）。
@@ -38,7 +38,7 @@ export function MobileCTA() {
       <div className="flex items-center justify-between gap-3 rounded-full bg-ink py-1.5 pr-1.5 pl-5 text-paper shadow-[0_10px_30px_-12px_rgb(0_0_0/0.5)]">
         <p className="leading-tight">
           <span className="block text-[0.8rem] font-bold tracking-[0.1em]">ライバー募集中</span>
-          <span className="block text-[0.62rem] tracking-[0.06em] opacity-70">{hasDmChannels() ? "未経験OK・DMからも応募可" : "未経験OK・1分で応募"}</span>
+          <span className="block text-[0.62rem] tracking-[0.06em] opacity-70">{hasDmChannels() ? `未経験OK・${dmChannelNames()}でも応募可` : "未経験OK・1分で応募"}</span>
         </p>
         <ApplyLinks variant="icons" />
       </div>

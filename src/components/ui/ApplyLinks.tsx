@@ -53,6 +53,14 @@ export function hasDmChannels() {
   return getChannels().some((c) => c.external);
 }
 
+/** フォーム以外の窓口名を「LINE・Instagram」のようにつなげる */
+export function dmChannelNames() {
+  return getChannels()
+    .filter((c) => c.external)
+    .map((c) => c.short)
+    .join("・");
+}
+
 function linkProps(c: Channel) {
   return c.external
     ? { href: c.href, target: "_blank", rel: "noopener noreferrer" }

@@ -58,7 +58,8 @@ export const site = {
    *   TikTok    … 事務所のアカウントURL（例：https://www.tiktok.com/@hinata_ent）
    */
   apply: {
-    line: "",
+    // ※ 仮リンク（LINE公式のトップ）。公式LINEができたら友だち追加URLに差し替える
+    line: "https://line.me/",
     instagram: "",
     tiktok: "",
   },

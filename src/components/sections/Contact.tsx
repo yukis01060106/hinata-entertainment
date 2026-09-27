@@ -1,5 +1,5 @@
 import { contact } from "@/content/site";
-import { ApplyLinks, hasDmChannels } from "@/components/ui/ApplyLinks";
+import { ApplyLinks, dmChannelNames, hasDmChannels } from "@/components/ui/ApplyLinks";
 import { Split } from "@/components/ui/Split";
 import { ContactForm } from "./ContactForm";
 
@@ -16,7 +16,7 @@ export function Contact() {
         </p>
         {hasDmChannels() && (
           <div className="mt-8 border-y border-ink/15 py-5" data-reveal="fade">
-            <p className="text-xs tracking-[0.1em] text-ink/75">ライバー応募は、フォームのほかに LINE・Instagram・TikTok の DM からも受け付けています。</p>
+            <p className="text-xs tracking-[0.1em] text-ink/75">ライバー応募は、フォームのほかに {dmChannelNames()} からも受け付けています。</p>
             <ApplyLinks className="mt-3" />
           </div>
         )}

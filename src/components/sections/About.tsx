@@ -46,7 +46,7 @@ export function About() {
               <article key={ch.no} className="grid items-center gap-y-10 lg:grid-cols-12 lg:gap-x-10">
                 <div
                   className={`w-[82%] sm:w-[62%] lg:w-auto ${
-                    even ? "lg:col-span-5 lg:col-start-1" : "ml-auto lg:order-2 lg:col-span-5 lg:col-start-8"
+                    even ? "lg:col-span-5 lg:col-start-1" : "ml-auto lg:order-2 lg:col-span-5 lg:col-start-8 lg:ml-0"
                   } ${i === 1 ? "lg:mt-24" : ""}`}
                 >
                   <PhotoStack
