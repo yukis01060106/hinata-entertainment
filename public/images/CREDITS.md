@@ -2,7 +2,7 @@
 
 ## AIで生成した人物写真（`livers/member-01.jpg`〜`member-11.jpg`）
 
-所属ライバー一覧と、トップの流れる写真に使っています。AIで生成した**架空の人物**で、実在の方ではありません。
+所属ライバー一覧・トップの流れる写真・About・Service の写真に使っています。AIで生成した**架空の人物**で、実在の方ではありません。
 実際の所属ライバーが決まったら、`src/content/site.ts` の `livers` と `hero.columns` で差し替えてください。
 
 ## Unsplash の写真
@@ -15,7 +15,7 @@
 
 | ファイル | 元画像 | 内容 |
 |---|---|---|
-| ※ `livers/liver-*.jpg` と `hero/hero-*.jpg` は、今は使っていません（AI生成の写真に置き換え済み） | | |
+| ※ 下の Unsplash の写真は、今はどれも使っていません（すべてAI生成の写真に置き換え済み） | | |
 | `livers/liver-01.jpg` | https://images.unsplash.com/photo-1662878857916-8b039b72264e | 長い髪と眼鏡をかけている人 |
 | `livers/liver-02.jpg` | https://images.unsplash.com/photo-1700190615918-b4aadb0e68cc | 床に座り込み、携帯電話を使う女性 |
 | `livers/liver-03.jpg` | https://images.unsplash.com/photo-1611403119860-57c4937ef987 | 白いシャツを着た笑顔の男が、風化したコンクリートの壁に立つ |
