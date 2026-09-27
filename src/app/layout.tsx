@@ -54,7 +54,6 @@ const jsonLd = {
   alternateName: ["HINATA", "ひなたエンターテインメント"],
   url: site.url,
   description: site.seo.description,
-  parentOrganization: { "@type": "Organization", name: site.company },
   address: {
     "@type": "PostalAddress",
     postalCode: site.address.postalCode,

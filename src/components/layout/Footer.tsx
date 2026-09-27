@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <p className="font-mincho text-lg font-extrabold">熊本から、ライバーが一番輝ける「ひなた」を。</p>
           <p className="mt-3 text-xs tracking-[0.15em] text-ink/70">
-            {site.name} ／ 運営：{site.company}
+            {site.name}
           </p>
         </div>
         <nav aria-label="フッターメニュー" className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm sm:grid-cols-3">

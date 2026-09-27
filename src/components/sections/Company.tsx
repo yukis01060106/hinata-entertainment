@@ -8,7 +8,7 @@ export function Company() {
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <p className="label" data-reveal="fade">
-            <span className="n">(06)</span>会社概要
+            <span className="n">(06)</span>事務所概要
           </p>
           <Split as="h2" lines={["Company"]} className="display mt-6 text-[clamp(3.6rem,15vw,7rem)] lg:text-[clamp(4rem,6vw,5.6rem)]" />
         </div>

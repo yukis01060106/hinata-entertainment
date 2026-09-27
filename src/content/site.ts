@@ -21,9 +21,8 @@ export const site = {
    */
   allowIndex: process.env.NEXT_PUBLIC_ALLOW_INDEX === "1",
   locale: "ja_JP",
-  company: "株式会社Rise Tech Solutions",
 
-  /** 所在地。会社概要・構造化データ（Google向け）に使われます */
+  /** 所在地。事務所概要・構造化データ（Google向け）に使われます */
   address: {
     postalCode: "860-0047",
     region: "熊本県",
@@ -77,7 +76,7 @@ export const site = {
     { label: "Livers", ja: "所属ライバー", href: "#livers" },
     { label: "Recruit", ja: "ライバー募集", href: "#recruit" },
     { label: "FAQ", ja: "よくある質問", href: "#faq" },
-    { label: "Company", ja: "会社概要", href: "#company" },
+    { label: "Company", ja: "事務所概要", href: "#company" },
     { label: "Contact", ja: "お問い合わせ", href: "#contact" },
   ],
 };
@@ -243,7 +242,6 @@ export const faq = [
 
 export const company: { label: string; value: string; link?: { label: string; href: string } }[] = [
   { label: "事務所名", value: "HINATA Entertainment" },
-  { label: "運営会社", value: "株式会社Rise Tech Solutions" },
   {
     label: "所在地",
     value: `〒${site.address.postalCode}\n${site.address.region}${site.address.locality}${site.address.street}\n${site.address.building}`,
