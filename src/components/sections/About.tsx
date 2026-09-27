@@ -5,7 +5,7 @@ import { PhotoStack } from "@/components/ui/PhotoStack";
 
 const layouts = [
   { shape: "arch", tone: "shu", ratio: "3 / 4" },
-  { shape: "rect", tone: "kin", ratio: "4 / 5" },
+  { shape: "rect", tone: "kin", ratio: "4 / 3" },
   { shape: "arch", tone: "ai", ratio: "3 / 4" },
 ] as const;
 
@@ -51,7 +51,7 @@ export function About() {
                 >
                   <PhotoStack
                     src={ch.image}
-                    alt=""
+                    alt={("alt" in ch && ch.alt) || ""}
                     sizes="(min-width: 1024px) 38vw, 82vw"
                     shape={l.shape}
                     tone={l.tone}
@@ -66,7 +66,7 @@ export function About() {
                     <span className="font-serif text-[clamp(3.4rem,11vw,6.5rem)] leading-none text-shu italic">{ch.no}</span>
                     <span className="h-px flex-1 bg-ink/20" />
                   </p>
-                  <Split as="h3" lines={[ch.title]} className="mt-5 font-mincho text-[clamp(1.45rem,5.6vw,2.5rem)] leading-snug font-extrabold" />
+                  <Split as="h3" lines={ch.title.split("\n")} className="mt-5 font-mincho text-[clamp(1.45rem,5.6vw,2.5rem)] leading-snug font-extrabold" />
                   <p className="mt-6 max-w-xl text-[0.95rem] leading-[2.2] text-ink/85 md:text-base" data-reveal="fade" style={{ "--delay": "0.3s" } as CSSProperties}>
                     {ch.body}
                   </p>

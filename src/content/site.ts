@@ -134,10 +134,11 @@ export const about = {
     },
     {
       no: "02",
-      title: "九州の太陽と、火の国・熊本の熱",
+      title: "九州の太陽と、\n火の国・熊本の熱",
       body: "「日向（ひむか）」は、古くから九州にある地名でもあり、日当たりがよく暖かい土地という意味があります。そして私たちの拠点・熊本は、阿蘇を抱く「火の国」。九州の太陽と熊本の熱を名前に込めて、ここから発信していきます。",
-      image: "/images/livers/member-01.jpg",
-      caption: "火の国・熊本から",
+      image: "/images/about/kumamoto-castle.jpg",
+      alt: "夕暮れの熊本城",
+      caption: "熊本城",
     },
     {
       no: "03",
