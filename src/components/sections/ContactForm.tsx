@@ -7,8 +7,12 @@ import { Arrow } from "@/components/ui/SunButton";
 
 type Kind = "apply" | "business";
 
-/** GitHub Pages のデモ（静的サイト）では送信先のサーバーがないため、送信せずに案内だけ出す */
-const isStaticDemo = Boolean(process.env.NEXT_PUBLIC_BASE_PATH);
+/**
+ * 送信先。通常は Next.js の /api/contact、Xserver では /contact.php（next.config.ts で設定）。
+ * 空のとき（GitHub Pages のデモ）は送信先がないため、送信せずに案内だけ出す。
+ */
+const endpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? "/api/contact";
+const isStaticDemo = endpoint === "";
 type Status = "idle" | "sending" | "done" | "error";
 
 function Field({ label, name, required, type = "text", ...rest }: { label: string; name: string; required?: boolean; type?: string } & React.InputHTMLAttributes<HTMLInputElement>) {
@@ -87,7 +91,7 @@ export function ContactForm() {
     setMessage("");
     try {
       const data = Object.fromEntries(new FormData(form).entries());
-      const res = await fetch("/api/contact", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${endpoint}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ kind, ...data }),

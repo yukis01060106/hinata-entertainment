@@ -53,6 +53,39 @@ npm run dev        # 開発サーバー起動 → http://localhost:3000
 
 ---
 
+## Xserver で公開する（本番）
+
+サイトを静的ファイルとして書き出し、SSH で Xserver にアップロードします。お問い合わせフォームは `contact.php`（PHP）がメールで送ります。
+
+### はじめに1回だけ
+1. **ドメインを追加する**：サーバーパネル →「ドメイン設定」でドメインを追加し、無料SSL を有効にします。
+2. **メールアドレスを作る**：サーバーパネル →「メールアカウント設定」で `info@ドメイン` などを作ります（フォームの送信元・受信先に使います）。
+3. **SSH を使えるようにする**：サーバーパネル →「SSH設定」で SSH を ON にします。手元で鍵を作り、公開鍵を「公開鍵登録・更新」に貼り付けます。
+   ```bash
+   ssh-keygen -t ed25519 -f ~/.ssh/xserver_hinata   # パスフレーズは任意
+   cat ~/.ssh/xserver_hinata.pub                    # この中身をサーバーパネルに貼る
+   ```
+4. **設定ファイルを作る**：`xserver/env.example` をプロジェクト直下に `.env.xserver` としてコピーし、サーバー・ドメイン・メールアドレスを書き換えます（git には入りません）。
+
+### 公開する
+```bash
+npm run deploy:xserver -- --dry-run   # 送られるファイルを確認するだけ（アップロードしない）
+npm run deploy:xserver                # 書き出してアップロード
+```
+
+- 公開先は `ドメイン/public_html/` です。サーバーにだけあるファイルは消しません。
+- サーバーに Xserver 側の `.htaccess` があれば、上書きする前に `.htaccess.bak-日時` として控えを取ります。
+- `xserver/.htaccess` で、https への転送、www なしへの統一、404ページ、キャッシュを設定しています。
+- 公開後は、フォームから実際に1通送って、メールが届くか確認してください。
+
+---
+
+## GitHub Pages でデモを見せる
+
+`npm run deploy:pages` で https://yukis01060106.github.io/hinata-entertainment/ に公開します。デモなので、検索エンジンには載せず、フォームも送信しません。
+
+---
+
 ## Vercel で公開する
 
 ### 1. GitHub にアップする

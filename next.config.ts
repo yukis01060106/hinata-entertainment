@@ -1,18 +1,24 @@
 import type { NextConfig } from "next";
 
 /**
- * GITHUB_PAGES=1 のときは、GitHub Pages（https://<user>.github.io/<repo>/）向けの静的サイトとして書き出す。
- * 静的サイトではお問い合わせフォームの送信（/api/contact）は動かないため、確認用のデモとしてだけ使う。
+ * STATIC_EXPORT=1 のときは、静的サイト（HTML・画像などのファイル一式）として out/ に書き出す。
+ *   GitHub Pages（デモ）… BASE_PATH=/hinata-entertainment、CONTACT_ENDPOINT は空（フォームは送信しない）
+ *   Xserver（本番）     … BASE_PATH は空、CONTACT_ENDPOINT=/contact.php（PHPでメール送信）
+ * 書き出しには scripts/deploy-pages.sh・scripts/deploy-xserver.sh を使う。
  */
-const pagesBasePath = process.env.GITHUB_PAGES === "1" ? process.env.PAGES_BASE_PATH ?? "/hinata-entertainment" : "";
+const isStaticExport = process.env.STATIC_EXPORT === "1";
+const basePath = isStaticExport ? process.env.BASE_PATH ?? "" : "";
 
-const nextConfig: NextConfig = pagesBasePath
+const nextConfig: NextConfig = isStaticExport
   ? {
       output: "export",
-      basePath: pagesBasePath,
+      basePath: basePath || undefined,
       trailingSlash: true,
-      env: { NEXT_PUBLIC_BASE_PATH: pagesBasePath },
-      images: { loader: "custom", loaderFile: "./src/lib/pages-image-loader.ts" },
+      env: {
+        NEXT_PUBLIC_BASE_PATH: basePath,
+        NEXT_PUBLIC_CONTACT_ENDPOINT: process.env.CONTACT_ENDPOINT ?? "",
+      },
+      images: { loader: "custom", loaderFile: "./src/lib/static-image-loader.ts" },
     }
   : {
       images: {

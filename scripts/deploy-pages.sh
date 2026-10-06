@@ -1,24 +1,17 @@
 #!/usr/bin/env bash
 # GitHub Pages（https://<user>.github.io/<repo>/）にデモを公開する。
 # 使い方：npm run deploy:pages
-# 静的サイトではお問い合わせ送信（/api/contact）は動かないため、Pages 版ではビルドから外す。
 set -euo pipefail
 cd "$(dirname "$0")/.."
-root=$(pwd)
 
 remote=$(git remote get-url origin)
 repo=$(basename -s .git "$remote")
 owner=$(basename "$(dirname "$remote")")
 base="/$repo"
 
-tmp=$(mktemp -d)
-trap 'mv "$tmp/api" "$root/src/app/api" 2>/dev/null || true; rm -rf "$tmp"' EXIT
-mv src/app/api "$tmp/api"
-
-GITHUB_PAGES=1 PAGES_BASE_PATH="$base" NEXT_PUBLIC_SITE_URL="https://$owner.github.io$base" npm run build
-
-# OGP画像のURLに basePath が二重に付くので直す（LINE などのサムネイル用）
-find out -name '*.html' -exec perl -pi -e "s#\Q$base$base/\E#$base/#g" {} +
+# デモなので、フォームは送信しない（CONTACT_ENDPOINT を空に）・検索エンジンにも載せない
+BASE_PATH="$base" CONTACT_ENDPOINT="" NEXT_PUBLIC_SITE_URL="https://$owner.github.io$base" NEXT_PUBLIC_ALLOW_INDEX="" \
+  scripts/build-static.sh
 touch out/.nojekyll
 
 cd out
