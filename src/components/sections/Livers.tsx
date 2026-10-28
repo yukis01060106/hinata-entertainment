@@ -79,7 +79,7 @@ export function Livers({ no, limit, hideHeading = false }: { no?: string; limit?
                   <div>
                     <span aria-hidden="true" className="sun mx-auto block size-10 sm:size-14" />
                     <p className="mt-5 font-serif text-[clamp(1.6rem,5vw,2.6rem)] leading-none italic">{extra.en}</p>
-                    <p className="mt-3 font-mincho text-sm font-extrabold sm:text-base">
+                    <p className="mt-3 font-display text-sm font-bold sm:text-base">
                       <span className="inline-block">{extra.line1}</span>
                       <span className="inline-block">{extra.line2}</span>
                     </p>

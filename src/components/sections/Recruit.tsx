@@ -16,7 +16,7 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
           <Split
             as="h2"
             lines={recruit.heading}
-            className="mt-8 text-center font-mincho text-[clamp(2.6rem,12vw,8rem)] leading-[1.15] font-extrabold"
+            className="mt-8 text-center font-display text-[clamp(2.6rem,12vw,8rem)] leading-[1.15] font-bold"
           />
           <p className="mx-auto mt-8 max-w-xl text-center text-[0.95rem] leading-[2.1] font-medium whitespace-pre-line md:text-base" data-reveal="fade">
             {recruit.lead}
@@ -33,7 +33,7 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
                 className="border-r border-b border-yoru/25 p-5 sm:p-7"
               >
                 <span className="cap">Point {String(i + 1).padStart(2, "0")}</span>
-                <p className="mt-3 font-mincho text-[clamp(1rem,4vw,1.6rem)] leading-snug font-extrabold [word-break:auto-phrase]">{pt.big}</p>
+                <p className="mt-3 font-display text-[clamp(1rem,4vw,1.6rem)] leading-snug font-bold [word-break:auto-phrase]">{pt.big}</p>
                 <p className="mt-3 text-xs leading-[1.9] sm:text-sm">{pt.body}</p>
               </li>
             ))}
@@ -52,7 +52,7 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
           <>
           {/* 応募の流れ：スクロールで線が伸び、各ステップが現れる */}
           <div className="mt-24 lg:mt-32">
-            <h3 className="text-center font-mincho text-[clamp(1.6rem,6vw,2.6rem)] font-extrabold" data-reveal="fade">
+            <h3 className="text-center font-display text-[clamp(1.6rem,6vw,2.6rem)] font-bold" data-reveal="fade">
               応募の流れ
             </h3>
             <p className="cap mt-2 text-center" data-reveal="fade">From entry to debut</p>
@@ -68,7 +68,7 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
                 <li key={s.no} className="relative" data-reveal="fade" style={{ "--delay": `${i * 0.15}s` } as CSSProperties}>
                   <span aria-hidden="true" className="absolute top-1 -left-10 size-5 rounded-full border-2 border-yoru bg-daidai lg:-top-12 lg:left-0" />
                   <p className="cap">Step {s.no}</p>
-                  <p className="mt-2 font-mincho text-xl font-extrabold">{s.title}</p>
+                  <p className="mt-2 font-display text-xl font-bold">{s.title}</p>
                   <p className="mt-2 text-sm leading-[1.9]">{s.body}</p>
                 </li>
               ))}
@@ -77,7 +77,7 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
 
           {/* 応募方法：好きな窓口を選べる */}
           <div className="mt-24 lg:mt-32" data-reveal="fade">
-            <h3 className="text-center font-mincho text-[clamp(1.6rem,6vw,2.6rem)] font-extrabold">応募方法</h3>
+            <h3 className="text-center font-display text-[clamp(1.6rem,6vw,2.6rem)] font-bold">応募方法</h3>
             <p className="mt-3 text-center text-sm leading-relaxed">{hasDmChannels() ? "いちばん気軽な方法で、お声がけください。" : "フォームから1分で応募できます。質問だけでも大丈夫です。"}</p>
             <ApplyLinks variant="cards" tone="onColor" className="mt-10" />
           </div>

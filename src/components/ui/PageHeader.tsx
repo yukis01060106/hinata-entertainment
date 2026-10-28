@@ -18,7 +18,7 @@ export function PageHeader({ path, title, en, lead }: Props) {
   return (
     <section data-sky="dawn" className="relative overflow-hidden px-[var(--gutter)] pt-32 pb-[clamp(3rem,8vw,6rem)] md:pt-40">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }} />
-      <span aria-hidden="true" className="sun pointer-events-none absolute -top-[14vmin] -right-[12vmin] aspect-square w-[46vmin] opacity-60 blur-[2px]" />
+      <span aria-hidden="true" className="sun float float--slow pointer-events-none absolute -top-[14vmin] -right-[12vmin] aspect-square w-[46vmin] opacity-60 blur-[2px]" />
       <div className="relative mx-auto max-w-7xl">
         <nav aria-label="パンくずリスト" className="cap" data-reveal="fade">
           <ol className="flex flex-wrap items-center gap-2">
@@ -32,7 +32,7 @@ export function PageHeader({ path, title, en, lead }: Props) {
           </ol>
         </nav>
         <Split as="p" lines={[en]} className="display mt-8 text-[clamp(4.2rem,20vw,13rem)] italic" />
-        <h1 className="mt-4 font-mincho text-[clamp(1.6rem,6vw,2.8rem)] leading-snug font-extrabold" data-reveal="fade">
+        <h1 className="mt-4 font-display text-[clamp(1.6rem,6vw,2.8rem)] leading-snug font-bold" data-reveal="fade">
           {title}
         </h1>
         {/* lead の改行は PC だけで効かせる（スマホは自然に折り返す） */}

@@ -19,8 +19,10 @@
   --color-kinari: #efe8dc; /* 生成り */
   --color-hai: #5e5953;    /* 灰：補足（白地でも読める濃さ） */
 
-  --font-mincho: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho", serif;
-  --font-gothic: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  /* 日本語は見出しも本文も Zen Kaku Gothic New。飾りの大きな漢字だけ明朝体 */
+  --font-display: var(--font-zen), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+  --font-gothic: var(--font-zen), "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  --font-ornament: var(--font-shippori), "Hiragino Mincho ProN", "Yu Mincho", serif;
   --font-serif: var(--font-instrument), "Times New Roman", serif;
   --font-mono: var(--font-dm-mono), ui-monospace, "SFMono-Regular", monospace;
 
@@ -57,9 +59,11 @@ body {
   background: transparent;
   color: var(--color-ink);
   font-family: var(--font-gothic);
+  font-weight: 500;
   font-feature-settings: "palt";
-  line-height: 1.9;
-  letter-spacing: 0.04em;
+  line-height: 2;
+  letter-spacing: 0.025em;
+  line-break: strict; /* 句読点や小さい「っ」で行が始まらないようにする */
   overflow-x: clip;
   -webkit-font-smoothing: antialiased;
 }
@@ -128,25 +132,52 @@ body {
 /* =========================================================
    Typography
    ========================================================= */
+/* 見出し：文節で改行し、行の長さをそろえる（対応ブラウザのみ） */
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  letter-spacing: 0.02em;
+  word-break: auto-phrase;
+  text-wrap: balance;
+}
+p,
+li,
+dd {
+  text-wrap: pretty;
+}
+
 /* 写真のキャプションや番号：等幅の小さな文字 */
 .cap {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   line-height: 1.6;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--color-hai);
+  color: rgb(23 24 29 / 0.62);
 }
 
 /* 見出しの上の小さなラベル：(01) 名前の由来 */
 .label {
   display: flex;
-  align-items: baseline;
-  gap: 0.9rem;
-  font-size: 0.78rem;
-  letter-spacing: 0.24em;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+/* ラベルの頭の小さな太陽 */
+.label::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fff3b0 0%, var(--color-kin) 22%, var(--color-daidai) 50%, var(--color-shu) 80%);
 }
 .label .n {
+  white-space: nowrap;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.06em;
@@ -619,6 +650,187 @@ html.skip-opening .opening {
   outline-offset: 3px;
 }
 
+
+/* =========================================================
+   Motion：サイト全体の動き
+   ※ transform は GSAP（パララックス・磁石）が使うので、ここでは
+     translate / scale を別のプロパティとして使い、ぶつからないようにする
+   ========================================================= */
+
+/* 読み進み具合のバー（画面の一番上） */
+.progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 80;
+  height: 3px;
+  pointer-events: none;
+  transform-origin: 0 50%;
+  scale: var(--progress, 0) 1;
+  background: linear-gradient(90deg, var(--color-kin), var(--color-shu) 60%, var(--color-pink));
+}
+
+/* ページ移動：太陽色の幕が上がり、新しいページがせり上がる（最初の読み込み時はオープニングに任せる） */
+.page-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  background: linear-gradient(170deg, #ffd27a 0%, var(--color-daidai) 45%, var(--color-shu) 78%, var(--color-pink) 100%);
+  border-radius: 0 0 50% 50% / 0 0 14vh 14vh;
+  animation: curtain-up 0.95s cubic-bezier(0.76, 0, 0.24, 1) 0.08s both;
+}
+.page-curtain__sun {
+  width: 3.2rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #fffbe6 0%, #fff0b3 40%, rgb(255 255 255 / 0) 72%);
+  animation: curtain-sun 0.6s var(--ease-sun) both;
+}
+.page-enter {
+  animation: page-rise 1s var(--ease-sun) 0.35s both;
+}
+html.first-load .page-curtain {
+  display: none;
+}
+html.first-load .page-enter {
+  animation: none;
+}
+@keyframes curtain-up {
+  to { translate: 0 -105%; }
+}
+@keyframes curtain-sun {
+  from { scale: 0.4; opacity: 0; }
+}
+@keyframes page-rise {
+  from { opacity: 0; translate: 0 32px; }
+}
+
+/* 写真：画面に入ると、少し大きい状態からズームアウトしながら現れる */
+.js [data-reveal] .photo img {
+  scale: 1.14;
+  transition:
+    scale 2s var(--ease-sun),
+    transform 1.6s var(--ease-sun),
+    filter 1.2s var(--ease-sun);
+}
+.js [data-reveal].is-in .photo img {
+  scale: 1;
+}
+
+/* ヒーローの写真の列：下からせり上がる（左右で時間差） */
+.js .hero-photos[data-reveal] > div {
+  translate: 0 22%;
+  transition: translate 2.2s var(--ease-sun);
+  transition-delay: calc(var(--intro-delay) - 0.3s);
+}
+.js .hero-photos[data-reveal] > div:nth-child(2) {
+  transition-delay: calc(var(--intro-delay) - 0.1s);
+}
+.js .hero-photos[data-reveal].is-in > div {
+  translate: 0 0;
+}
+
+/* カード：マウスを乗せると少し浮く */
+.lift {
+  transition:
+    translate 0.7s var(--ease-sun),
+    box-shadow 0.7s var(--ease-sun);
+}
+@media (hover: hover) {
+  .lift:hover {
+    translate: 0 -6px;
+    box-shadow: 0 22px 40px -24px rgb(194 65 12 / 0.45);
+  }
+}
+
+/* 飾りの太陽：ゆっくり浮かぶ */
+.float {
+  animation: float 9s ease-in-out infinite alternate;
+}
+.float--slow {
+  animation-duration: 13s;
+}
+@keyframes float {
+  from { translate: 0 0; }
+  to { translate: 0 -18px; }
+}
+
+/* マーカー：見出しの最後の行に、文字が昇ったあと夕焼け色の線が引かれる */
+.mark-last .ln:last-child {
+  position: relative;
+  isolation: isolate;
+  width: fit-content;
+}
+.mark-last .ln:last-child::after {
+  content: "";
+  position: absolute;
+  inset: auto -0.04em 0.1em -0.04em;
+  z-index: -1;
+  height: 0.3em;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--color-kin), var(--color-daidai) 60%, rgb(255 143 192 / 0.85));
+  opacity: 0.75;
+  transform-origin: 0 50%;
+  scale: 0 1;
+  transition: scale 1.2s var(--ease-sun);
+  transition-delay: calc(var(--delay, 0s) + 0.75s);
+}
+.mark-last.is-in .ln:last-child::after,
+html:not(.js) .mark-last .ln:last-child::after {
+  scale: 1 1;
+}
+
+/* 文字リンク：下線がマウスを乗せると右へ抜け、矢印が進む */
+.ulink {
+  padding-bottom: 0.4em;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition:
+    background-size 0.7s var(--ease-sun),
+    color 0.4s;
+}
+.ulink .arrow {
+  transition: translate 0.5s var(--ease-sun);
+}
+@media (hover: hover) {
+  .ulink:hover {
+    background-position: 100% 100%;
+    background-size: 0% 1px;
+  }
+  .ulink:hover .arrow {
+    translate: 6px 0;
+  }
+}
+
+/* PCのナビ：マウスを乗せる／今いるページで、下に小さな太陽の線が伸びる */
+.navlink {
+  position: relative;
+  padding-block: 0.4rem;
+}
+.navlink::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-kin), var(--color-shu));
+  scale: 0 1;
+  transition: scale 0.6s var(--ease-sun);
+}
+.navlink:hover::after,
+.navlink[aria-current="page"]::after {
+  scale: 1 1;
+}
+
+/* ボタン：押したときに少し沈む */
+.btn {
+  transition: scale 0.3s var(--ease-sun);
+}
+.btn:active {
+  scale: 0.97;
+}
+
 /* =========================================================
    Reduced motion：動きを控えめに
    ========================================================= */
@@ -656,5 +868,18 @@ html.skip-opening .opening {
   }
   .btn::before {
     display: none;
+  }
+  .float,
+  .page-curtain,
+  .page-enter {
+    animation: none !important;
+  }
+  .page-curtain {
+    display: none;
+  }
+  .js [data-reveal] .photo img,
+  .js .hero-photos[data-reveal] > div {
+    scale: 1 !important;
+    translate: none !important;
   }
 }

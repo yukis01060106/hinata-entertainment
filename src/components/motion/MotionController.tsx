@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -23,8 +23,12 @@ const SKY: Record<string, { a: string; b: string; c: string }> = {
 
 export function MotionController() {
   const pathname = usePathname();
+  const firstPath = useRef(pathname);
 
   useEffect(() => {
+    // 2ページ目からは、ページ移動の幕を出す
+    if (pathname !== firstPath.current) document.documentElement.classList.remove("first-load");
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     const cleanups: Array<() => void> = [];
@@ -103,7 +107,31 @@ export function MotionController() {
         );
       });
 
+      // --- 読み進み具合のバー ---
+      const bar = document.querySelector<HTMLElement>(".progress");
+      if (bar) {
+        ScrollTrigger.create({
+          start: 0,
+          end: "max",
+          onUpdate: (self) => bar.style.setProperty("--progress", self.progress.toFixed(4)),
+        });
+      }
+
       if (reduced) return;
+
+      // --- 大きな英字（Service・Livers など）：スクロールに合わせて横に流れる（交互に逆向き） ---
+      gsap.utils.toArray<HTMLElement>(".display").forEach((el, i) => {
+        const dir = i % 2 === 0 ? 1 : -1;
+        gsap.fromTo(
+          el,
+          { xPercent: -5 * dir },
+          {
+            xPercent: 5 * dir,
+            ease: "none",
+            scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true },
+          },
+        );
+      });
 
       // --- パララックス ---
       gsap.utils.toArray<HTMLElement>("[data-parallax]").forEach((el) => {
@@ -166,6 +194,27 @@ export function MotionController() {
           el.removeEventListener("pointerleave", leave);
         });
       });
+    }
+
+    // --- マウスに合わせて、写真やステッカーが奥行きを持ってずれる（PCのみ） ---
+    if (!reduced && finePointer) {
+      const movers = gsap.utils.toArray<HTMLElement>("[data-mouse]").map((el) => ({
+        k: parseFloat(el.dataset.mouse || "20"),
+        x: gsap.quickTo(el, "x", { duration: 1.4, ease: "power3.out" }),
+        y: gsap.quickTo(el, "y", { duration: 1.4, ease: "power3.out" }),
+      }));
+      if (movers.length) {
+        const move = (e: PointerEvent) => {
+          const nx = e.clientX / window.innerWidth - 0.5;
+          const ny = e.clientY / window.innerHeight - 0.5;
+          movers.forEach((m) => {
+            m.x(nx * m.k);
+            m.y(ny * m.k);
+          });
+        };
+        window.addEventListener("pointermove", move);
+        cleanups.push(() => window.removeEventListener("pointermove", move));
+      }
     }
 
     // --- カードの光の反射（カーソル／タップ位置にハイライト） ---

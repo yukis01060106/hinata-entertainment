@@ -63,7 +63,21 @@ export function Header() {
             </span>
           </Link>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 lg:gap-9">
+            {/* PCは上部にメニューを常に出す（FAQ はライバー募集の中なので省く） */}
+            <nav aria-label="メインメニュー" className="hidden rounded-full bg-paper/80 px-7 py-1.5 shadow-[0_8px_30px_-18px_rgb(23_24_29/0.35)] backdrop-blur-md lg:block">
+              <ul className="flex items-center gap-7 text-[0.82rem] font-bold tracking-[0.12em]">
+                {site.nav
+                  .filter((item) => !item.href.includes("#"))
+                  .map((item) => (
+                    <li key={item.href}>
+                      <Link href={item.href} aria-current={isCurrent(item.href) ? "page" : undefined} className="navlink">
+                        {item.ja}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </nav>
             <Link
               href={hero.cta.href}
               className="hidden rounded-full bg-shu px-5 py-2 text-xs font-bold tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper lg:block"
@@ -76,7 +90,7 @@ export function Header() {
               aria-expanded={open}
               aria-controls="global-menu"
               aria-label={open ? "メニューを閉じる" : "メニューを開く"}
-              className="group -mr-3 grid size-12 place-items-center"
+              className="group -mr-3 grid size-12 place-items-center lg:hidden"
             >
               <span className="relative block h-3 w-8">
                 <span

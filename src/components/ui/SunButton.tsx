@@ -28,7 +28,7 @@ export function SunButton({ href, children, variant = "shu", className = "" }: P
 /** 「詳しく見る」などの、矢印つきの文字リンク（下層ページへの入口） */
 export function MoreLink({ href, children, className = "" }: Omit<Props, "variant">) {
   return (
-    <Link href={href} className={`group inline-flex items-center gap-3 border-b border-ink/30 pb-1.5 text-sm font-bold tracking-[0.14em] transition-colors hover:border-shu hover:text-deep ${className}`}>
+    <Link href={href} className={`ulink group inline-flex items-center gap-3 text-sm font-bold tracking-[0.14em] hover:text-deep ${className}`}>
       {children}
       <Arrow />
     </Link>

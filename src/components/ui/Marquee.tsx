@@ -10,7 +10,7 @@ export function Marquee({ items, reverse = false }: { items: string[]; reverse?:
               className={`px-[0.45em] leading-none ${
                 isLatin
                   ? "font-serif text-[clamp(3.2rem,12vw,9rem)] italic"
-                  : "font-mincho text-[clamp(2.4rem,9vw,6.6rem)] font-extrabold"
+                  : "font-display text-[clamp(2.4rem,9vw,6.6rem)] font-bold"
               }`}
             >
               {item}

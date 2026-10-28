@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Mono, Instrument_Serif, Shippori_Mincho_B1 } from "next/font/google";
+import { DM_Mono, Instrument_Serif, Shippori_Mincho_B1, Zen_Kaku_Gothic_New } from "next/font/google";
 import { site } from "@/content/site";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -10,8 +10,10 @@ import { LightCursor } from "@/components/motion/LightCursor";
 import { Grain } from "@/components/motion/Grain";
 import "./globals.css";
 
-// 日本語の見出し用の明朝体だけWebフォントにする（preload せず、必要な文字だけ順次読み込む）。
-// 本文のゴシック体は端末標準（iPhoneはヒラギノ角ゴ、AndroidはNoto Sans）を使い、表示速度を優先。
+// 日本語：見出しも本文も Zen Kaku Gothic New（今っぽく、どの端末でも同じ見た目）。
+// 日本語の文字は使う分だけ順次読み込まれる（preload は英数字の分だけ）。
+const zen = Zen_Kaku_Gothic_New({ weight: ["400", "500", "700", "900"], subsets: ["latin"], variable: "--font-zen", display: "swap" });
+// 「日向」など、飾りの大きな漢字だけ明朝体
 const shippori = Shippori_Mincho_B1({ weight: "800", subsets: ["latin"], variable: "--font-shippori", display: "swap", preload: false });
 // 英字：雑誌のような細身のセリフ体と、キャプション用の等幅フォント
 const instrument = Instrument_Serif({ weight: "400", style: ["normal", "italic"], subsets: ["latin"], variable: "--font-instrument", display: "swap" });
@@ -101,14 +103,14 @@ const jsonLd = {
 };
 
 // JS有効の目印と、同じタブで2回目以降はオープニングを省略する処理（描画前に実行）
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');try{if(sessionStorage.getItem('hinata-opening')){d.classList.add('skip-opening')}else{sessionStorage.setItem('hinata-opening','1')}}catch(e){}})();`;
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js','first-load');try{if(sessionStorage.getItem('hinata-opening')){d.classList.add('skip-opening')}else{sessionStorage.setItem('hinata-opening','1')}}catch(e){}})();`;
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="ja"
       suppressHydrationWarning
-      className={`${shippori.variable} ${instrument.variable} ${dmMono.variable}`}
+      className={`${zen.variable} ${shippori.variable} ${instrument.variable} ${dmMono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
@@ -122,6 +124,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           本文へスキップ
         </a>
         <div className="sky" aria-hidden="true" />
+        <div className="progress" aria-hidden="true" />
         <Opening />
         <Header />
         <main id="main">{children}</main>

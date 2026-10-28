@@ -6,7 +6,7 @@ export function CtaBand() {
     <section data-sky="dusk" className="relative px-[var(--gutter)] py-[clamp(4rem,10vw,7rem)]">
       <div className="dusk relative mx-auto max-w-6xl overflow-hidden rounded-[1.5rem] px-6 py-[clamp(3.5rem,9vw,6rem)] text-center" data-reveal="fade">
         <p className="cap">Join us</p>
-        <p className="mt-4 font-mincho text-[clamp(1.7rem,6.4vw,3.2rem)] leading-snug font-extrabold">
+        <p className="mt-4 font-display text-[clamp(1.7rem,6.4vw,3.2rem)] leading-snug font-bold">
           まずは気軽に、
           <br />
           ご相談ください。

@@ -33,8 +33,8 @@ export function Manager({ no }: { no?: string }) {
                   ) : (
                     // 写真がないあいだは、太陽色のカードに名前を大きく置く
                     <div aria-hidden="true" className="absolute inset-0 grid place-items-center bg-gradient-to-b from-[#fff4df] via-[#ffd9b0] to-[#ff9d6b]">
-                      <span className="sun absolute top-[14%] aspect-square w-[52%] opacity-90" />
-                      <span className="relative mt-[22%] font-mincho text-[clamp(6rem,24vw,11rem)] leading-none font-extrabold text-ink">{m.nameJa}</span>
+                      <span className="sun float absolute top-[14%] aspect-square w-[52%] opacity-90" />
+                      <span className="relative mt-[22%] font-ornament text-[clamp(6rem,24vw,11rem)] leading-none font-extrabold text-ink">{m.nameJa}</span>
                       <span className="cap absolute bottom-[8%] text-ink/70">{m.nameEn.toUpperCase()} — MANAGER</span>
                     </div>
                   )}
@@ -44,7 +44,7 @@ export function Manager({ no }: { no?: string }) {
               <div className="md:col-span-7" data-reveal="fade" style={{ "--delay": `${0.1 + i * 0.05}s` } as CSSProperties}>
                 <p className="cap text-deep">{m.role}</p>
                 <p className="mt-3 flex items-baseline gap-4">
-                  <span className="font-mincho text-[clamp(2.4rem,8vw,3.6rem)] leading-none font-extrabold">{m.nameJa}</span>
+                  <span className="font-display text-[clamp(2.4rem,8vw,3.6rem)] leading-none font-bold">{m.nameJa}</span>
                   <span className="font-serif text-[clamp(1.6rem,5vw,2.4rem)] leading-none text-ink/70 italic">{m.nameEn}</span>
                 </p>
                 <ul className="mt-6 flex flex-wrap gap-2">

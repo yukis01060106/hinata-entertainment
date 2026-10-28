@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/content/site";
 import { SunSticker } from "@/components/ui/SunSticker";
+import { Split } from "@/components/ui/Split";
 
 /** フッター：大きな HINATA と、太陽のステッカー */
 export function Footer() {
@@ -8,7 +9,7 @@ export function Footer() {
     <footer className="relative overflow-hidden border-t border-ink/10 px-[var(--gutter)] pt-16 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
       <div className="mx-auto flex max-w-7xl flex-col gap-10 md:flex-row md:items-start md:justify-between">
         <div>
-          <p className="font-mincho text-lg font-extrabold">熊本から、ライバーが一番輝ける「ひなた」を。</p>
+          <p className="font-display text-lg font-bold">熊本から、ライバーが一番輝ける「ひなた」を。</p>
           <p className="mt-3 text-xs tracking-[0.15em] text-ink/70">
             {site.name}
           </p>
@@ -36,8 +37,8 @@ export function Footer() {
 
       <div aria-hidden="true" className="relative mx-auto mt-16 max-w-7xl">
         <div className="flex items-end justify-between gap-4">
-          <p className="font-serif text-[19vw] leading-[0.78] tracking-[-0.02em] lg:text-[17vw]">HINATA</p>
-          <SunSticker className="mb-[1vw] w-[16vw] shrink-0 lg:w-[11vw]" />
+          <Split as="p" lines={["HINATA"]} className="font-serif text-[19vw] leading-[0.78] tracking-[-0.02em] lg:text-[17vw]" />
+          <SunSticker className="float mb-[1vw] w-[16vw] shrink-0 lg:w-[11vw]" />
         </div>
         <span className="mt-4 block h-px bg-ink/20" />
       </div>

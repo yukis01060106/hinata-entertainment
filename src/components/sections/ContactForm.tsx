@@ -118,7 +118,7 @@ export function ContactForm() {
       <div className="border-y border-ink/20 px-6 py-16 text-center" role="status">
         <span aria-hidden="true" className="sun mx-auto size-10" />
         <p className="mt-6 font-serif text-4xl italic">Thank you.</p>
-        <p className="mt-5 font-mincho text-xl font-extrabold">送信が完了しました。</p>
+        <p className="mt-5 font-display text-xl font-bold">送信が完了しました。</p>
         <p className="mt-4 text-sm leading-loose text-ink/80">
           内容を確認のうえ、担当者より3営業日以内にご連絡いたします。
           <br />

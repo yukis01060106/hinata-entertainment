@@ -19,7 +19,7 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
         </h2>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
           <Split as="p" lines={["Service"]} className="display text-[clamp(4.6rem,22vw,15rem)] italic" />
-          <p className="max-w-md font-mincho text-[clamp(1.1rem,4.2vw,1.6rem)] leading-relaxed font-extrabold whitespace-pre-line lg:pb-6" data-reveal="fade">
+          <p className="max-w-md font-display text-[clamp(1.1rem,4.2vw,1.6rem)] leading-relaxed font-bold whitespace-pre-line lg:pb-6" data-reveal="fade">
             {service.lead}
           </p>
         </div>
@@ -52,7 +52,7 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
                       {p.key === "gift" ? "Gift" : "Shop"}
                       <span className="text-shu">.</span>
                     </p>
-                    <Split as="h3" lines={[p.ja]} className="mt-4 font-mincho text-[clamp(1.7rem,6.6vw,3rem)] leading-tight font-extrabold" />
+                    <Split as="h3" lines={[p.ja]} className="mt-4 font-display text-[clamp(1.7rem,6.6vw,3rem)] leading-tight font-bold" />
                     <p className="mt-6 text-[0.95rem] leading-[2.1] text-ink/85 md:text-base" data-reveal="fade" style={{ "--delay": "0.25s" } as CSSProperties}>
                       {p.body}
                     </p>
@@ -68,9 +68,9 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
                           style={{ "--delay": `${si * 0.1}s` } as CSSProperties}
                           className="grid grid-cols-[2.2rem_1fr] gap-x-3 border-b border-ink/15 py-5"
                         >
-                          <span className="font-mincho text-lg leading-7 font-extrabold text-shu">{kanji[si]}</span>
+                          <span className="font-display text-lg leading-7 font-bold text-shu">{kanji[si]}</span>
                           <div>
-                            <h4 className="font-mincho text-lg leading-7 font-extrabold">{s.title}</h4>
+                            <h4 className="font-display text-lg leading-7 font-bold">{s.title}</h4>
                             <p className="mt-2 text-sm leading-[1.95] text-ink/75">{s.body}</p>
                           </div>
                         </li>
@@ -99,7 +99,7 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
         >
           <span>
             <span className="cap block">For business</span>
-            <span className="mt-2 block font-mincho text-[clamp(1.1rem,4.4vw,1.5rem)] leading-relaxed font-extrabold">{contact.businessNote}</span>
+            <span className="mt-2 block font-display text-[clamp(1.1rem,4.4vw,1.5rem)] leading-relaxed font-bold">{contact.businessNote}</span>
           </span>
           <span className="flex shrink-0 items-center gap-3 text-sm font-bold tracking-[0.14em] text-deep">
             企業の方はこちら

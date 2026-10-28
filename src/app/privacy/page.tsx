@@ -42,14 +42,14 @@ export default function PrivacyPage() {
         <p className="label">
           <span className="n">(—)</span>Privacy Policy
         </p>
-        <h1 className="mt-6 font-mincho text-[clamp(2rem,8vw,3.4rem)] font-extrabold">プライバシーポリシー</h1>
+        <h1 className="mt-6 font-display text-[clamp(2rem,8vw,3.4rem)] font-bold">プライバシーポリシー</h1>
         <p className="mt-8 leading-loose text-ink/85">
           {site.name}（以下「当事務所」）は、事務所の運営において取得する個人情報を、以下のとおり適切に取り扱います。
         </p>
         <div className="mt-12 space-y-10">
           {sections.map((s) => (
             <div key={s.title}>
-              <h2 className="font-mincho text-xl font-extrabold">{s.title}</h2>
+              <h2 className="font-display text-xl font-bold">{s.title}</h2>
               <p className="mt-3 leading-loose whitespace-pre-line text-ink/85">{s.body}</p>
             </div>
           ))}

@@ -25,7 +25,7 @@ export function About({ no, compact = false }: { no?: string; compact?: boolean 
             <Split
               as="h2"
               lines={["名前に込めた、", "三つの想い。"]}
-              className="font-mincho text-[clamp(1.35rem,5.4vw,2.8rem)] leading-snug font-extrabold whitespace-nowrap"
+              className="font-display text-[clamp(1.35rem,5.4vw,2.8rem)] leading-snug font-bold whitespace-nowrap"
             />
             <p className="mt-6 text-sm leading-loose text-ink/75 md:text-base" data-reveal="fade" style={{ "--delay": "0.3s" } as CSSProperties}>
               {about.lead}
@@ -33,7 +33,7 @@ export function About({ no, compact = false }: { no?: string; compact?: boolean 
           </div>
           <div aria-hidden="true" className="relative flex shrink-0 gap-3" data-parallax="0.12">
             <span className="vertical cap pt-2">hinata / hi-no-kata</span>
-            <span className="vertical block font-mincho text-[clamp(7rem,32vw,19rem)] leading-[0.92] font-extrabold">
+            <span className="vertical block font-ornament text-[clamp(7rem,32vw,19rem)] leading-[0.92] font-extrabold">
               日<span className="text-shu">向</span>
             </span>
           </div>
@@ -69,7 +69,7 @@ export function About({ no, compact = false }: { no?: string; compact?: boolean 
                     <span className="font-serif text-[clamp(3.4rem,11vw,6.5rem)] leading-none text-shu italic">{ch.no}</span>
                     <span className="h-px flex-1 bg-ink/20" />
                   </p>
-                  <Split as="h3" lines={ch.title.split("\n")} className="mt-5 font-mincho text-[clamp(1.45rem,5.6vw,2.5rem)] leading-snug font-extrabold" />
+                  <Split as="h3" lines={ch.title.split("\n")} className="mt-5 font-display text-[clamp(1.45rem,5.6vw,2.5rem)] leading-snug font-bold" />
                   <p className="mt-6 max-w-xl text-[0.95rem] leading-[2.2] text-ink/85 md:text-base" data-reveal="fade" style={{ "--delay": "0.3s" } as CSSProperties}>
                     {ch.body}
                   </p>
@@ -87,7 +87,7 @@ export function About({ no, compact = false }: { no?: string; compact?: boolean 
             as="p"
             variant="glow"
             lines={about.closing}
-            className="font-mincho text-[clamp(1.7rem,7.2vw,5.2rem)] leading-[1.45] font-extrabold tracking-[0.02em]"
+            className="font-display text-[clamp(1.7rem,7.2vw,5.2rem)] leading-[1.45] font-bold tracking-[0.02em]"
           />
           <p className="mt-8 flex items-center gap-3 text-sm tracking-[0.1em] text-ink/80 md:text-base" data-reveal="fade" style={{ "--delay": "1.4s" } as CSSProperties}>
             <span className="sun size-2.5 shrink-0" />

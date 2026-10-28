@@ -77,10 +77,12 @@ type Props = {
   className?: string;
   /** 暗い色の上に置くとき（Recruit の橙の上など）は "onColor" */
   tone?: "default" | "onColor";
+  /** external = LINE などの外部の窓口だけ（フォームは別のボタンで出すとき） */
+  channels?: "all" | "external";
 };
 
-export function ApplyLinks({ variant = "chips", className = "", tone = "default" }: Props) {
-  const channels = getChannels();
+export function ApplyLinks({ variant = "chips", className = "", tone = "default", channels: which = "all" }: Props) {
+  const channels = getChannels().filter((c) => which === "all" || c.external);
 
   if (variant === "icons") {
     return (
@@ -119,7 +121,7 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
                 </svg>
               </span>
               <span>
-                <span className="block font-mincho text-lg font-extrabold">{c.label}</span>
+                <span className="block font-display text-lg font-bold">{c.label}</span>
                 <span className="mt-1.5 block text-xs leading-relaxed opacity-80 sm:text-sm">{c.note}</span>
               </span>
             </ChannelLink>
