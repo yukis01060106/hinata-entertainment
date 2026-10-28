@@ -2,13 +2,13 @@ import type { CSSProperties } from "react";
 import { company } from "@/content/site";
 import { Split } from "@/components/ui/Split";
 
-export function Company() {
+export function Company({ no }: { no?: string }) {
   return (
     <section id="company" data-sky="night" className="relative px-[var(--gutter)] py-[clamp(6rem,14vw,11rem)]">
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <h2 className="label" data-reveal="fade">
-          <span className="n">(08)</span>事務所概要
+          {no && <span className="n">({no})</span>}事務所概要
         </h2>
           <Split as="p" lines={["Company"]} className="display mt-6 text-[clamp(3.6rem,15vw,7rem)] lg:text-[clamp(4rem,6vw,5.6rem)]" />
         </div>

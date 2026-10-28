@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, useSyncExternalStore, type FormEvent } from "react";
 import Link from "next/link";
 import { contact } from "@/content/site";
 import { Arrow } from "@/components/ui/SunButton";
@@ -46,37 +46,44 @@ function Chips({ legend, name, options, required }: { legend: string; name: stri
   );
 }
 
+// URL の ?kind=（書き出したHTMLの時点では無いので、サーバー側は null）
+const noSubscribe = () => () => {};
+const readKindParam = () => new URLSearchParams(window.location.search).get("kind");
+
 export function ContactForm() {
-  const [kind, setKind] = useState<Kind>("apply");
+  // 「/contact?kind=business」のようなリンクで来たら、そのタブで開く。タブを押したら、そちらを優先
+  const kindParam = useSyncExternalStore(noSubscribe, readKindParam, () => null);
+  const [picked, setKind] = useState<Kind | null>(null);
+  const kind: Kind = picked ?? (kindParam === "business" ? "business" : "apply");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
 
-  // ページ内の「企業の方はこちら」などのリンクから、タブを切り替えて開く
+  // このページの中で同じようなリンクを押したときは、ページを読み直さずにタブを切り替えてフォームへ移動する
   useEffect(() => {
+    const samePath = (a: string, b: string) => a.replace(/\/$/, "") === b.replace(/\/$/, "");
     const onClick = (e: MouseEvent) => {
-      const link = (e.target as HTMLElement).closest<HTMLElement>("[data-contact-kind]");
-      const next = link?.dataset.contactKind;
+      const link = (e.target as HTMLElement).closest<HTMLAnchorElement>("a[href]");
+      if (!link || !samePath(link.pathname, window.location.pathname)) return;
+      const next = new URL(link.href).searchParams.get("kind");
       if (next !== "apply" && next !== "business") return;
+      e.preventDefault();
+      e.stopPropagation(); // Next.js の Link・Lenis より先に止める
       setKind(next);
       setStatus("idle");
-      // フォームの高さが切り替わってからスクロールしないと、到着位置がずれるため自前でスクロールする
-      if (link instanceof HTMLAnchorElement && link.hash === "#contact") {
-        e.preventDefault();
-        e.stopPropagation(); // Lenis のアンカー処理（window で受ける）より先に止める
-        requestAnimationFrame(() =>
-          requestAnimationFrame(() => {
-            const target = document.getElementById("contact");
-            const lenis = (window as unknown as { __lenis?: { scrollTo: (t: HTMLElement) => void } }).__lenis;
-            if (!target) return;
-            if (lenis) lenis.scrollTo(target);
-            else target.scrollIntoView({ behavior: "smooth" });
-            history.replaceState(null, "", "#contact");
-          }),
-        );
-      }
+      history.replaceState(null, "", `?kind=${next}`);
+      // フォームの高さが切り替わってからスクロールしないと、到着位置がずれる
+      requestAnimationFrame(() =>
+        requestAnimationFrame(() => {
+          const target = document.getElementById("contact");
+          const lenis = (window as unknown as { __lenis?: { scrollTo: (t: HTMLElement) => void } }).__lenis;
+          if (!target) return;
+          if (lenis) lenis.scrollTo(target);
+          else target.scrollIntoView({ behavior: "smooth" });
+        }),
+      );
     };
-    document.addEventListener("click", onClick);
-    return () => document.removeEventListener("click", onClick);
+    document.addEventListener("click", onClick, true);
+    return () => document.removeEventListener("click", onClick, true);
   }, []);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {

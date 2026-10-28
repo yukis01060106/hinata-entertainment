@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import Link from "next/link";
 import { site } from "@/content/site";
 
 type Channel = {
@@ -43,7 +44,7 @@ export function getChannels(): Channel[] {
     { key: "line", label: "LINEで応募", short: "LINE", note: "友だち追加して、メッセージを送るだけ。質問だけでもOKです。", href: site.apply.line, icon: icons.line, external: true },
     { key: "instagram", label: "InstagramのDMで応募", short: "Instagram", note: "DMで「応募したい」と送ってください。", href: site.apply.instagram, icon: icons.instagram, external: true },
     { key: "tiktok", label: "TikTokのDMで応募", short: "TikTok", note: "いつも使っているTikTokから、そのまま応募できます。", href: site.apply.tiktok, icon: icons.tiktok, external: true },
-    { key: "form", label: "フォームで応募", short: "フォーム", note: "1分で完了。配信の経験やご希望もお伝えいただけます。", href: "#contact", icon: icons.form, external: false },
+    { key: "form", label: "フォームで応募", short: "フォーム", note: "1分で完了。配信の経験やご希望もお伝えいただけます。", href: "/contact?kind=apply", icon: icons.form, external: false },
   ];
   return all.filter((c) => c.href);
 }
@@ -61,10 +62,13 @@ export function dmChannelNames() {
     .join("・");
 }
 
-function linkProps(c: Channel) {
-  return c.external
-    ? { href: c.href, target: "_blank", rel: "noopener noreferrer" }
-    : { href: c.href, "data-contact-kind": "apply" };
+/** 外部（LINE など）は新しいタブ、フォームはサイト内のページ移動 */
+function ChannelLink({ channel, ...rest }: { channel: Channel } & Omit<React.ComponentProps<"a">, "href">) {
+  return channel.external ? (
+    <a href={channel.href} target="_blank" rel="noopener noreferrer" {...rest} />
+  ) : (
+    <Link href={channel.href} {...rest} />
+  );
 }
 
 type Props = {
@@ -83,13 +87,13 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
       <ul className={`flex items-center gap-2 ${className}`}>
         {channels.map((c) => (
           <li key={c.key}>
-            <a
-              {...linkProps(c)}
+            <ChannelLink
+              channel={c}
               aria-label={c.label}
               className="grid size-11 place-items-center rounded-full bg-paper text-ink transition-colors hover:bg-shu [&_svg]:size-[1.15rem]"
             >
               {c.icon}
-            </a>
+            </ChannelLink>
           </li>
         ))}
       </ul>
@@ -101,8 +105,8 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
       <ul className={`grid gap-3 ${channels.length === 1 ? "mx-auto max-w-md" : channels.length === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-4"} ${className}`}>
         {channels.map((c) => (
           <li key={c.key}>
-            <a
-              {...linkProps(c)}
+            <ChannelLink
+              channel={c}
               data-shine
               className={`group flex h-full flex-col gap-4 rounded-2xl border p-5 transition-colors sm:p-6 ${
                 tone === "onColor" ? "border-ink/25 hover:bg-ink hover:text-paper" : "border-ink/15 hover:border-shu"
@@ -118,7 +122,7 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
                 <span className="block font-mincho text-lg font-extrabold">{c.label}</span>
                 <span className="mt-1.5 block text-xs leading-relaxed opacity-80 sm:text-sm">{c.note}</span>
               </span>
-            </a>
+            </ChannelLink>
           </li>
         ))}
       </ul>
@@ -129,13 +133,13 @@ export function ApplyLinks({ variant = "chips", className = "", tone = "default"
     <ul className={`grid gap-2 sm:flex sm:flex-wrap ${channels.length === 1 ? "grid-cols-1" : "grid-cols-2"} ${className}`}>
       {channels.map((c) => (
         <li key={c.key}>
-          <a
-            {...linkProps(c)}
+          <ChannelLink
+            channel={c}
             className="flex items-center justify-center gap-2 rounded-full border border-ink/25 bg-paper/70 px-4 py-2.5 text-[0.8rem] font-bold tracking-[0.08em] transition-colors hover:border-shu hover:bg-shu sm:justify-start [&_svg]:size-4"
           >
             {c.icon}
             {channels.length === 1 ? c.label : c.short}
-          </a>
+          </ChannelLink>
         </li>
       ))}
     </ul>

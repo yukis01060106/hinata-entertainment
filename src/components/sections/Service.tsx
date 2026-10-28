@@ -1,17 +1,21 @@
 import type { CSSProperties } from "react";
 import { contact, service } from "@/content/site";
-import { Arrow } from "@/components/ui/SunButton";
+import Link from "next/link";
+import { Arrow, MoreLink } from "@/components/ui/SunButton";
 import { Split } from "@/components/ui/Split";
 import { PhotoStack } from "@/components/ui/PhotoStack";
 
 const kanji = ["一", "二", "三", "四", "五", "六"];
 
-export function Service() {
+/** compact = トップ用（サポート内容を省き、事業内容のページへ案内する）。hideHeading = 下層ページで見出しをページ側に任せる */
+export function Service({ no, compact = false, hideHeading = false }: { no?: string; compact?: boolean; hideHeading?: boolean }) {
   return (
     <section id="service" data-sky="day" className="relative px-[var(--gutter)] py-[clamp(5rem,12vw,10rem)]">
       <div className="mx-auto max-w-7xl">
+        {!hideHeading && (
+          <>
         <h2 className="label" data-reveal="fade">
-          <span className="n">(03)</span>事業内容
+          {no && <span className="n">({no})</span>}事業内容
         </h2>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
           <Split as="p" lines={["Service"]} className="display text-[clamp(4.6rem,22vw,15rem)] italic" />
@@ -19,8 +23,10 @@ export function Service() {
             {service.lead}
           </p>
         </div>
+          </>
+        )}
 
-        <div className="mt-[clamp(4rem,12vw,9rem)] space-y-[clamp(5rem,14vw,10rem)]">
+        <div className={`${hideHeading ? "" : "mt-[clamp(4rem,12vw,9rem)]"} space-y-[clamp(5rem,14vw,10rem)]`}>
           {service.pillars.map((p, i) => {
             const even = i % 2 === 0;
             return (
@@ -52,6 +58,7 @@ export function Service() {
                     </p>
 
                     {/* サポート内容：罫線で区切ったリスト */}
+                    {!compact && (
                     <ul className="mt-10 border-t border-ink/15">
                       {p.supports.map((s, si) => (
                         <li
@@ -69,6 +76,7 @@ export function Service() {
                         </li>
                       ))}
                     </ul>
+                    )}
                   </div>
                 </div>
               </article>
@@ -76,10 +84,15 @@ export function Service() {
           })}
         </div>
 
+        {compact && (
+          <MoreLink href="/service" className="mt-[clamp(3.5rem,9vw,6rem)]">
+            事業内容をくわしく見る
+          </MoreLink>
+        )}
+
         {/* 企業の方へ：押すとフォームが「企業のお問い合わせ」で開く */}
-        <a
-          href="#contact"
-          data-contact-kind="business"
+        <Link
+          href="/contact?kind=business"
           data-shine
           data-reveal="fade"
           className="group mt-[clamp(4rem,10vw,7rem)] flex flex-col gap-4 border-y border-ink/20 py-8 sm:flex-row sm:items-center sm:justify-between"
@@ -92,7 +105,7 @@ export function Service() {
             企業の方はこちら
             <Arrow />
           </span>
-        </a>
+        </Link>
       </div>
     </section>
   );

@@ -1,19 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { ApplyLinks, dmChannelNames, hasDmChannels } from "@/components/ui/ApplyLinks";
 
 /**
  * スマホ用：画面下に固定の応募バー（LINE・Instagram・TikTok・フォーム）。
- * ヒーローを過ぎたら現れ、お問い合わせフォームが見えている間は隠れる。
+ * ヒーローを過ぎたら（下層ページでは少しスクロールしたら）現れ、お問い合わせフォームが見えている間は隠れる。
  */
 export function MobileCTA() {
   const [show, setShow] = useState(false);
 
+  const pathname = usePathname();
+
   useEffect(() => {
     const heroEl = document.getElementById("top");
     const contactEl = document.getElementById("contact");
-    if (!heroEl || !contactEl) return;
     const state = { pastHero: false, atContact: false };
     const update = () => setShow(state.pastHero && !state.atContact);
     const io = new IntersectionObserver((entries) => {
@@ -23,10 +25,22 @@ export function MobileCTA() {
       }
       update();
     });
-    io.observe(heroEl);
-    io.observe(contactEl);
-    return () => io.disconnect();
-  }, []);
+    if (heroEl) io.observe(heroEl);
+    if (contactEl) io.observe(contactEl);
+    // ヒーローがない下層ページでは、画面の半分ほどスクロールしたら出す
+    const onScroll = () => {
+      state.pastHero = window.scrollY > window.innerHeight * 0.5;
+      update();
+    };
+    if (!heroEl) {
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+    return () => {
+      io.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [pathname]);
 
   return (
     <div

@@ -4,12 +4,12 @@ import { managers } from "@/content/site";
 import { Split } from "@/components/ui/Split";
 
 /** マネージャー紹介：写真（なければ名前のカード）と経歴 */
-export function Manager() {
+export function Manager({ no }: { no?: string }) {
   return (
     <section id="manager" data-sky="day" className="relative px-[var(--gutter)] py-[clamp(5rem,12vw,9rem)]">
       <div className="mx-auto max-w-6xl">
         <h2 className="label" data-reveal="fade">
-          <span className="n">(05)</span>マネージャー紹介
+          {no && <span className="n">({no})</span>}マネージャー紹介
         </h2>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
           <Split as="p" lines={["Manager"]} className="display text-[clamp(3.8rem,17vw,11rem)] italic" />

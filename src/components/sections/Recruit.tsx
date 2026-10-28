@@ -2,14 +2,16 @@ import type { CSSProperties } from "react";
 import { recruit } from "@/content/site";
 import { Split } from "@/components/ui/Split";
 import { ApplyLinks, hasDmChannels } from "@/components/ui/ApplyLinks";
+import { MoreLink, SunButton } from "@/components/ui/SunButton";
 
-export function Recruit() {
+/** compact = トップ用（応募の流れ・応募方法を省き、募集ページと応募フォームへ案内する） */
+export function Recruit({ no, compact = false }: { no?: string; compact?: boolean }) {
   return (
     <section id="recruit" data-sky="dusk" className="relative pt-[clamp(3rem,8vw,6rem)]">
       <div className="dusk relative overflow-hidden px-[var(--gutter)] pt-[clamp(6rem,18vw,12rem)] pb-[clamp(5rem,12vw,9rem)]">
         <div className="relative mx-auto max-w-6xl">
           <p className="label justify-center" data-reveal="fade">
-            <span className="n">(06)</span>ライバー募集
+            {no && <span className="n">({no})</span>}ライバー募集
           </p>
           <Split
             as="h2"
@@ -37,6 +39,17 @@ export function Recruit() {
             ))}
           </ul>
 
+          {compact && (
+            <div className="mt-14 flex flex-col items-center gap-8 lg:mt-20" data-reveal="fade">
+              <SunButton href="/contact?kind=apply" variant="ink">
+                ライバーに応募する
+              </SunButton>
+              <MoreLink href="/recruit">応募の流れ・よくある質問を見る</MoreLink>
+            </div>
+          )}
+
+          {!compact && (
+          <>
           {/* 応募の流れ：スクロールで線が伸び、各ステップが現れる */}
           <div className="mt-24 lg:mt-32">
             <h3 className="text-center font-mincho text-[clamp(1.6rem,6vw,2.6rem)] font-extrabold" data-reveal="fade">
@@ -68,6 +81,8 @@ export function Recruit() {
             <p className="mt-3 text-center text-sm leading-relaxed">{hasDmChannels() ? "いちばん気軽な方法で、お声がけください。" : "フォームから1分で応募できます。質問だけでも大丈夫です。"}</p>
             <ApplyLinks variant="cards" tone="onColor" className="mt-10" />
           </div>
+          </>
+          )}
         </div>
       </div>
     </section>

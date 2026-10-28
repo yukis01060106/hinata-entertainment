@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type Lenis from "lenis";
 import { site, hero } from "@/content/site";
@@ -9,31 +10,10 @@ function getLenis() {
   return (window as unknown as { __lenis?: Lenis }).__lenis;
 }
 
-/** トップページ内なら滑らかにスクロール、それ以外のページならトップへ移動 */
-export function useSectionLink() {
-  const pathname = usePathname();
-  const isHome = pathname === "/";
-  const hrefFor = (hash: string) => (isHome ? hash : `/${hash}`);
-  const onClick = (e: MouseEvent<HTMLAnchorElement>, hash: string, before?: () => void) => {
-    if (!isHome) return;
-    e.preventDefault();
-    before?.();
-    const target = document.querySelector<HTMLElement>(hash);
-    const lenis = getLenis();
-    if (lenis) {
-      lenis.start();
-      lenis.scrollTo(target ?? 0, { duration: 1.4 });
-    } else {
-      (target ?? document.body).scrollIntoView({ behavior: "smooth" });
-    }
-    history.replaceState(null, "", hash);
-  };
-  return { hrefFor, onClick };
-}
-
 export function Header() {
   const [open, setOpen] = useState(false);
-  const { hrefFor, onClick } = useSectionLink();
+  const pathname = usePathname();
+  const isCurrent = (href: string) => !href.includes("#") && pathname.replace(/\/$/, "") === href;
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
 
@@ -72,8 +52,8 @@ export function Header() {
         } ${scrolled && !open ? "bg-paper/85 shadow-[0_1px_0_rgb(23_24_29/0.08)] backdrop-blur-md" : "bg-transparent"}`}
       >
         <div className="flex h-16 items-center justify-between px-[var(--gutter)] md:h-20">
-          <a href={hrefFor("#top")} onClick={(e) => onClick(e, "#top", () => setOpen(false))}>
-            <span className="sr-only">トップへ戻る：</span>
+          <Link href="/" onClick={() => setOpen(false)}>
+            <span className="sr-only">トップページへ：</span>
             <span className="flex items-center gap-2.5">
               <span className="sun size-3.5 md:size-4" />
               <span className="font-serif text-[1.35rem] leading-none tracking-[0.18em] text-ink md:text-[1.6rem]">HINATA</span>
@@ -81,17 +61,15 @@ export function Header() {
             <span className="mt-1.5 block pl-6 font-mono text-[0.5rem] leading-none tracking-[0.3em] text-ink md:pl-[1.65rem] md:text-[0.56rem]">
               AGENCY
             </span>
-          </a>
+          </Link>
 
           <div className="flex items-center gap-4">
-            <a
-              href={hrefFor(hero.cta.href)}
-              onClick={(e) => onClick(e, hero.cta.href)}
-              data-contact-kind="apply"
+            <Link
+              href={hero.cta.href}
               className="hidden rounded-full bg-shu px-5 py-2 text-xs font-bold tracking-[0.2em] text-ink transition-colors hover:bg-ink hover:text-paper lg:block"
             >
               {hero.cta.label}
-            </a>
+            </Link>
             <button
               type="button"
               onClick={() => setOpen((v) => !v)}
@@ -128,18 +106,19 @@ export function Header() {
               className={`transition-all duration-700 ${open ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"}`}
               style={{ transitionDelay: open ? `${120 + i * 60}ms` : "0ms" }}
             >
-              <a
-                href={hrefFor(item.href)}
-                onClick={(e) => onClick(e, item.href, () => setOpen(false))}
+              <Link
+                href={item.href}
+                onClick={() => setOpen(false)}
+                aria-current={isCurrent(item.href) ? "page" : undefined}
                 tabIndex={open ? 0 : -1}
                 className="group flex items-baseline gap-4 py-1"
               >
                 <span className="font-mono text-[0.65rem] text-deep">{String(i + 1).padStart(2, "0")}</span>
-                <span className="font-serif text-[clamp(2.4rem,10vw,5.4rem)] leading-[1.05] text-ink transition-[font-style,color] group-hover:text-shu group-hover:italic">
+                <span className="font-serif text-[clamp(2.4rem,10vw,5.4rem)] leading-[1.05] text-ink transition-[font-style,color] group-hover:text-shu group-hover:italic group-aria-[current=page]:text-shu group-aria-[current=page]:italic">
                   {item.label}
                 </span>
                 <span className="text-xs tracking-[0.2em] text-hai">{item.ja}</span>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>

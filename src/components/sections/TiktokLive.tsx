@@ -3,7 +3,7 @@ import { tiktokLive } from "@/content/site";
 import { Split } from "@/components/ui/Split";
 
 /** ヒーロー直後：TikTok LIVE を中心にしていることを、明るい色の帯で打ち出す */
-export function TiktokLive() {
+export function TiktokLive({ no }: { no?: string }) {
   return (
     <section id="tiktok-live" data-sky="dawn" className="relative px-[var(--gutter)] pt-[clamp(3rem,8vw,6rem)]">
       <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[1.5rem] bg-gradient-to-br from-[#fff4df] via-[#ffe9d2] to-[#ffd9c4] px-[clamp(1.25rem,5vw,4.5rem)] py-[clamp(3.5rem,9vw,7rem)]">
@@ -18,7 +18,7 @@ export function TiktokLive() {
 
         <div className="relative">
           <p className="label" data-reveal="fade">
-            <span className="n">(01)</span>TikTok LIVE特化
+            {no && <span className="n">({no})</span>}TikTok LIVE特化
           </p>
           <p className="cap mt-6" data-reveal="fade">
             Why TikTok LIVE?

@@ -1,14 +1,27 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 import { livers } from "@/content/site";
 import { Split } from "@/components/ui/Split";
 
-export function Livers() {
+/**
+ * limit = トップ用（先頭から limit 人だけ出し、最後の枠を一覧ページへのリンクにする）
+ * hideHeading = 下層ページで見出しをページ側に任せる
+ */
+export function Livers({ no, limit, hideHeading = false }: { no?: string; limit?: number; hideHeading?: boolean }) {
+  const shown = limit ? livers.slice(0, limit) : livers;
+  const rest = livers.length - shown.length;
+  // 最後の枠：一覧ではライバー募集、トップでは「すべて見る」
+  const extra = limit
+    ? { href: "/livers", label: "所属ライバーをすべて見る", en: "View all", line1: "ほかのライバーも、", line2: "紹介しています", tag: "All livers", name: "More", nameJa: `ほか${rest}名`, note: "所属ライバーの一覧ページへ" }
+    : { href: "/contact?kind=apply", label: "ライバーに応募する", en: "Next is you.", line1: "あなたの席、", line2: "あいています", tag: "Now recruiting", name: "You", nameJa: "あなた", note: "未経験でも大丈夫。HINATAで一緒に始めませんか？" };
   return (
     <section id="livers" data-sky="noon" className="relative px-[var(--gutter)] py-[clamp(5rem,12vw,10rem)]">
       <div className="mx-auto max-w-7xl">
+        {!hideHeading && (
+          <>
         <h2 className="label" data-reveal="fade">
-          <span className="n">(04)</span>所属ライバー
+          {no && <span className="n">({no})</span>}所属ライバー
         </h2>
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
           <Split as="p" lines={["Livers"]} className="display text-[clamp(4.6rem,22vw,15rem)]" />
@@ -18,10 +31,12 @@ export function Livers() {
             HINATAに所属しているライバーを紹介します。
           </p>
         </div>
+          </>
+        )}
 
         {/* 2列（PCは3列）で、横一列にそろえて並べる */}
-        <ul className="mt-14 grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-6 lg:mt-20 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20">
-          {livers.map((l, i) => (
+        <ul className={`${hideHeading ? "" : "mt-14 lg:mt-20"} grid grid-cols-2 gap-x-4 gap-y-12 sm:gap-x-6 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-20`}>
+          {shown.map((l, i) => (
             <li key={l.nameEn + i} className="card group">
               <div data-reveal="fade" style={{ "--delay": `${(i % 3) * 0.1}s` } as CSSProperties}>
                 <div className="arch relative" data-shine>
@@ -56,28 +71,28 @@ export function Livers() {
               </div>
             </li>
           ))}
-          {/* 最後の枠：次のライバーを募集（並びの端数もここで埋まる） */}
+          {/* 最後の枠（並びの端数もここで埋まる） */}
           <li className="card group">
-            <div data-reveal="fade" style={{ "--delay": `${(livers.length % 3) * 0.1}s` } as CSSProperties}>
-              <a href="#contact" data-contact-kind="apply" className="block" aria-label="ライバーに応募する">
+            <div data-reveal="fade" style={{ "--delay": `${(shown.length % 3) * 0.1}s` } as CSSProperties}>
+              <Link href={extra.href} className="block" aria-label={extra.label}>
                 <div className="arch grid aspect-[3/4] place-items-center border border-dashed border-ink/30 bg-paper/50 px-4 text-center transition-colors group-hover:border-shu group-hover:bg-shu/10">
                   <div>
                     <span aria-hidden="true" className="sun mx-auto block size-10 sm:size-14" />
-                    <p className="mt-5 font-serif text-[clamp(1.6rem,5vw,2.6rem)] leading-none italic">Next is you.</p>
+                    <p className="mt-5 font-serif text-[clamp(1.6rem,5vw,2.6rem)] leading-none italic">{extra.en}</p>
                     <p className="mt-3 font-mincho text-sm font-extrabold sm:text-base">
-                      <span className="inline-block">あなたの席、</span>
-                      <span className="inline-block">あいています</span>
+                      <span className="inline-block">{extra.line1}</span>
+                      <span className="inline-block">{extra.line2}</span>
                     </p>
                   </div>
                 </div>
                 <p className="cap mt-4 flex justify-between">
-                  <span>No.{String(livers.length + 1).padStart(2, "0")}</span>
-                  <span className="text-deep">Now recruiting</span>
+                  <span>{limit ? "Livers" : `No.${String(livers.length + 1).padStart(2, "0")}`}</span>
+                  <span className="text-deep">{extra.tag}</span>
                 </p>
                 <div className="mt-2 flex items-end justify-between gap-3 border-b border-ink/15 pb-3">
                   <div>
-                    <p className="font-serif text-[clamp(1.6rem,6vw,2.6rem)] leading-none">You</p>
-                    <p className="mt-1.5 text-xs tracking-[0.2em] text-ink/70">あなた</p>
+                    <p className="font-serif text-[clamp(1.6rem,6vw,2.6rem)] leading-none">{extra.name}</p>
+                    <p className="mt-1.5 text-xs tracking-[0.2em] text-ink/70">{extra.nameJa}</p>
                   </div>
                   <span className="grid size-9 shrink-0 place-items-center rounded-full border border-ink/25 transition-colors group-hover:border-shu group-hover:bg-shu">
                     <svg width="14" height="8" viewBox="0 0 18 10" fill="none" aria-hidden="true">
@@ -85,8 +100,8 @@ export function Livers() {
                     </svg>
                   </span>
                 </div>
-                <p className="mt-3 text-xs leading-relaxed text-ink/80 sm:text-sm">未経験でも大丈夫。HINATAで一緒に始めませんか？</p>
-              </a>
+                <p className="mt-3 text-xs leading-relaxed text-ink/80 sm:text-sm">{extra.note}</p>
+              </Link>
             </div>
           </li>
         </ul>

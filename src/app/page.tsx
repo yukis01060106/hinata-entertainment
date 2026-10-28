@@ -4,28 +4,21 @@ import { TiktokLive } from "@/components/sections/TiktokLive";
 import { About } from "@/components/sections/About";
 import { Service } from "@/components/sections/Service";
 import { Livers } from "@/components/sections/Livers";
-import { Manager } from "@/components/sections/Manager";
 import { Recruit } from "@/components/sections/Recruit";
-import { Faq } from "@/components/sections/Faq";
-import { Company } from "@/components/sections/Company";
-import { Contact } from "@/components/sections/Contact";
 import { Marquee } from "@/components/ui/Marquee";
 
+/** トップ：各ページのさわりを並べ、くわしい内容は下層ページへ案内する */
 export default function Home() {
   return (
     <>
       <Hero />
-      <TiktokLive />
-      <About />
+      <TiktokLive no="01" />
+      <About no="02" compact />
       <Marquee items={marquees.first} />
-      <Service />
-      <Livers />
-      <Manager />
+      <Service no="03" compact />
+      <Livers no="04" limit={5} />
       <Marquee items={marquees.second} reverse />
-      <Recruit />
-      <Faq />
-      <Company />
-      <Contact />
+      <Recruit no="05" compact />
     </>
   );
 }

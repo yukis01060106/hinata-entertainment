@@ -2,6 +2,7 @@ import type { CSSProperties } from "react";
 import { about } from "@/content/site";
 import { Split } from "@/components/ui/Split";
 import { PhotoStack } from "@/components/ui/PhotoStack";
+import { MoreLink } from "@/components/ui/SunButton";
 
 const layouts = [
   { shape: "arch", tone: "shu", ratio: "3 / 4" },
@@ -9,12 +10,13 @@ const layouts = [
   { shape: "arch", tone: "ai", ratio: "3 / 4" },
 ] as const;
 
-export function About() {
+/** compact = トップ用（3つの章を省き、事務所についてのページへ案内する） */
+export function About({ no, compact = false }: { no?: string; compact?: boolean }) {
   return (
     <section id="about" data-sky="sunrise" className="relative overflow-hidden px-[var(--gutter)] pt-[clamp(6rem,16vw,12rem)] pb-[clamp(4rem,10vw,8rem)]">
       <div className="relative mx-auto max-w-7xl">
         <p className="label" data-reveal="fade">
-          <span className="n">(02)</span>名前の由来
+          {no && <span className="n">({no})</span>}名前の由来
         </p>
 
         {/* 見出し：縦書きの巨大な「日向」 */}
@@ -38,6 +40,7 @@ export function About() {
         </div>
 
         {/* 3つの章：写真を左右交互に、段差をつけて配置 */}
+        {!compact && (
         <div className="mt-[clamp(4rem,12vw,10rem)] space-y-[clamp(5rem,14vw,11rem)]">
           {about.chapters.map((ch, i) => {
             const l = layouts[i % layouts.length];
@@ -76,6 +79,8 @@ export function About() {
           })}
         </div>
 
+        )}
+
         {/* しめくくり：1文字ずつ灯る */}
         <div className="mt-[clamp(6rem,16vw,12rem)] border-t border-ink/15 pt-[clamp(3rem,8vw,6rem)]">
           <Split
@@ -88,6 +93,11 @@ export function About() {
             <span className="sun size-2.5 shrink-0" />
             {about.closingSub}
           </p>
+          {compact && (
+            <MoreLink href="/about" className="mt-12">
+              名前の由来と、事務所について
+            </MoreLink>
+          )}
         </div>
       </div>
     </section>

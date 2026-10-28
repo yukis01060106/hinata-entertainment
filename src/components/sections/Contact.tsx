@@ -3,17 +3,22 @@ import { ApplyLinks, dmChannelNames, hasDmChannels } from "@/components/ui/Apply
 import { Split } from "@/components/ui/Split";
 import { ContactForm } from "./ContactForm";
 
-export function Contact() {
+/** hideHeading = 下層ページで見出しをページ側に任せる */
+export function Contact({ no, hideHeading = false }: { no?: string; hideHeading?: boolean }) {
   return (
     <section id="contact" data-sky="night" className="relative px-[var(--gutter)] pt-[clamp(4rem,10vw,8rem)] pb-[clamp(6rem,14vw,10rem)]">
       <div className="mx-auto max-w-3xl">
+        {!hideHeading && (
+          <>
         <h2 className="label" data-reveal="fade">
-          <span className="n">(09)</span>お問い合わせ
+          {no && <span className="n">({no})</span>}お問い合わせ
         </h2>
         <Split as="p" lines={["Contact"]} className="display mt-6 text-[clamp(3.8rem,17vw,9rem)] italic" />
         <p className="mt-6 text-sm leading-loose text-ink/80 md:text-base" data-reveal="fade">
           {contact.lead}
         </p>
+          </>
+        )}
         {hasDmChannels() && (
           <div className="mt-8 border-y border-ink/15 py-5" data-reveal="fade">
             <p className="text-xs tracking-[0.1em] text-ink/75">ライバー応募は、フォームのほかに {dmChannelNames()} からも受け付けています。</p>

@@ -76,22 +76,61 @@ export const site = {
   ],
 
   nav: [
-    { label: "TikTok LIVE", ja: "TikTok LIVE", href: "#tiktok-live" },
-    { label: "About", ja: "名前の由来", href: "#about" },
-    { label: "Service", ja: "事業内容", href: "#service" },
-    { label: "Livers", ja: "所属ライバー", href: "#livers" },
-    { label: "Manager", ja: "マネージャー", href: "#manager" },
-    { label: "Recruit", ja: "ライバー募集", href: "#recruit" },
-    { label: "FAQ", ja: "よくある質問", href: "#faq" },
-    { label: "Company", ja: "事務所概要", href: "#company" },
-    { label: "Contact", ja: "お問い合わせ", href: "#contact" },
+    { label: "About", ja: "事務所について", href: "/about" },
+    { label: "Service", ja: "事業内容", href: "/service" },
+    { label: "Livers", ja: "所属ライバー", href: "/livers" },
+    { label: "Recruit", ja: "ライバー募集", href: "/recruit" },
+    { label: "FAQ", ja: "よくある質問", href: "/recruit#faq" },
+    { label: "Contact", ja: "お問い合わせ", href: "/contact" },
   ],
 };
+
+/** 下層ページの見出し・検索結果のタイトルと説明文 */
+export const pages = {
+  about: {
+    path: "/about",
+    title: "事務所について",
+    en: "About",
+    lead: "名前に込めた想いと、ライバーを支えるマネージャー、\n事務所の概要をご紹介します。",
+    description:
+      "熊本・福岡・九州のライバー事務所「Hinata Agency」について。名前に込めた想い、マネージャーの紹介、所在地などの事務所概要をご案内します。",
+  },
+  service: {
+    path: "/service",
+    title: "事業内容",
+    en: "Service",
+    lead: "TikTok LIVEでの「ギフト配信」と「ショップ配信」。\nライバーの「好き」や「得意」を、仕事にしていきます。",
+    description:
+      "TikTok LIVEを中心に、ギフト配信ライバーのマネジメントと、TikTok Shopのショップ配信（ライブコマース）を行っています。企業さまからのライブコマースのご依頼も受け付けています。",
+  },
+  livers: {
+    path: "/livers",
+    title: "所属ライバー",
+    en: "Livers",
+    lead: "熊本・九州から、全国のリスナーへ。\nHinata Agencyに所属しているライバーを紹介します。",
+    description: "Hinata Agencyに所属するTikTok LIVEライバーを紹介します。熊本・九州から、全国のリスナーへ配信を届けています。",
+  },
+  recruit: {
+    path: "/recruit",
+    title: "ライバー募集",
+    en: "Recruit",
+    lead: "未経験OK、スマホ1台から始められます。\n応募の流れと、よくある質問をまとめました。",
+    description:
+      "熊本・福岡・九州でTikTok LIVEライバーを募集しています。未経験OK、スマホ1台から始められます。応募の流れや、よくある質問もこちらから。",
+  },
+  contact: {
+    path: "/contact",
+    title: "お問い合わせ・ライバー応募",
+    en: "Contact",
+    lead: "ライバーへの応募と、企業の方からのお問い合わせは、\nそれぞれのフォームからお送りください。",
+    description: "Hinata Agencyへのライバー応募と、企業さまからのライブコマースのご依頼・ご相談は、こちらのフォームから受け付けています。",
+  },
+} as const;
 
 export const hero = {
   catch: ["ライバーが、", "一番輝ける場所へ。"],
   lead: "熊本発、TikTok LIVEを中心に活動するライバー事務所です。\n配信がはじめての方も、スマホ1台から始められます。",
-  cta: { label: "ライバー応募", href: "#contact" },
+  cta: { label: "ライバー応募", href: "/contact?kind=apply" },
   /** ヒーローで縦に流れる写真（左列・右列）。枚数は自由に増減できます */
   columns: [
     ["/images/livers/member-01.jpg", "/images/livers/member-04.jpg", "/images/livers/member-09.jpg", "/images/livers/member-06.jpg", "/images/livers/member-11.jpg", "/images/livers/member-03.jpg"],

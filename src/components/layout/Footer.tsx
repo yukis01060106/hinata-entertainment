@@ -15,7 +15,7 @@ export function Footer() {
         </div>
         <nav aria-label="フッターメニュー" className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm sm:grid-cols-3">
           {site.nav.map((n) => (
-            <Link key={n.href} href={`/${n.href}`} className="text-ink/80 hover:text-shu">
+            <Link key={n.href} href={n.href} className="text-ink/80 hover:text-shu">
               {n.ja}
             </Link>
           ))}
