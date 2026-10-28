@@ -26,7 +26,8 @@ export function Manager() {
               <div className="w-[70%] max-w-[22rem] sm:w-[52%] md:col-span-5 md:w-full" data-reveal="fade">
                 <div className="arch relative aspect-[3/4] overflow-hidden" data-shine>
                   {m.image ? (
-                    <div className="photo film absolute inset-0">
+                    // .photo は角の丸みを親から受け継ぐので、アーチは外側の枠で作る
+                    <div className="photo film h-full">
                       <Image src={m.image} alt={`${m.role} ${m.nameJa}`} fill sizes="(min-width: 768px) 34vw, 60vw" className="object-cover" />
                     </div>
                   ) : (
