@@ -79,7 +79,7 @@ export function Header() {
               <span className="font-serif text-[1.35rem] leading-none tracking-[0.18em] text-ink md:text-[1.6rem]">HINATA</span>
             </span>
             <span className="mt-1.5 block pl-6 font-mono text-[0.5rem] leading-none tracking-[0.3em] text-ink md:pl-[1.65rem] md:text-[0.56rem]">
-              ENTERTAINMENT
+              AGENCY
             </span>
           </a>
 

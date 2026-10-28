@@ -45,14 +45,14 @@ BASE_PATH="" CONTACT_ENDPOINT="/contact.php" \
 # 3. Xserver 用のファイルを足す
 cp xserver/contact.php xserver/.htaccess out/
 node -e '
-  const cfg = { to: process.env.CONTACT_TO_EMAIL, from: process.env.CONTACT_FROM_EMAIL, from_name: "HINATA Entertainment", dry_run: false };
+  const cfg = { to: process.env.CONTACT_TO_EMAIL, from: process.env.CONTACT_FROM_EMAIL, from_name: "Hinata Agency", dry_run: false };
   const json = JSON.stringify(cfg).replace(/\\/g, "\\\\").replace(/'"'"'/g, "\\'"'"'");
   require("fs").writeFileSync("out/contact-config.php", "<?php\n// scripts/deploy-xserver.sh が .env.xserver から作るファイル\nreturn json_decode('"'"'" + json + "'"'"', true);\n");
 '
 
 # 4. いまサーバーにある .htaccess が自前のものでなければ、念のため控えを取る
 if [ -z "$dry_run" ]; then
-  $ssh_cmd "$remote" "cd '$dest' && if [ -f .htaccess ] && ! grep -q 'HINATA Entertainment（Xserver 用）' .htaccess; then cp .htaccess .htaccess.bak-\$(date +%Y%m%d%H%M%S); fi"
+  $ssh_cmd "$remote" "cd '$dest' && if [ -f .htaccess ] && ! grep -q 'Hinata Agency（Xserver 用）' .htaccess; then cp .htaccess .htaccess.bak-\$(date +%Y%m%d%H%M%S); fi"
 fi
 
 # 5. アップロード（サーバーにだけあるファイルは消さない）

@@ -1,6 +1,6 @@
-# HINATA Entertainment 公式サイト
+# Hinata Agency 公式サイト
 
-熊本のTikTok LIVEライバー事務所「HINATA Entertainment」の公式サイトです。
+熊本のTikTok LIVEライバー事務所「Hinata Agency」の公式サイトです。
 Next.js 16（App Router）＋ TypeScript ＋ Tailwind CSS v4 ＋ GSAP（ScrollTrigger）＋ Lenis で作っています。
 
 ---
@@ -92,7 +92,7 @@ npm run deploy:xserver                # 書き出してアップロード
 ```bash
 cd ~/Desktop/hinata-entertainment
 git add -A
-git commit -m "HINATA Entertainment 公式サイト"
+git commit -m "Hinata Agency 公式サイト"
 gh repo create hinata-entertainment --private --source=. --push
 ```
 （`gh` を使わない場合は、GitHub上で空のリポジトリを作り、表示される `git remote add origin ...` と `git push -u origin main` を実行します）
@@ -108,11 +108,11 @@ gh repo create hinata-entertainment --private --source=. --push
 
 | 名前 | 内容 |
 |---|---|
-| `NEXT_PUBLIC_SITE_URL` | 公開するURL（例：`https://hinata-ent.jp`）。OGP、サイトマップ、canonical に使われます |
+| `NEXT_PUBLIC_SITE_URL` | 公開するURL（例：`https://hinata-agency.co.jp`）。OGP、サイトマップ、canonical に使われます |
 | `NEXT_PUBLIC_ALLOW_INDEX` | **本番公開のときに `1` にする。** 未設定のあいだは Google などの検索結果に出ません（デモ・確認用） |
 | `RESEND_API_KEY` | フォームの内容をメールで受け取るための、[Resend](https://resend.com) の APIキー |
 | `CONTACT_TO_EMAIL` | 問い合わせを受け取るメールアドレス（カンマ区切りで複数指定できます） |
-| `CONTACT_FROM_EMAIL` | 送信元のアドレス（Resend でドメイン認証したもの。例：`HINATA <info@hinata-ent.jp>`） |
+| `CONTACT_FROM_EMAIL` | 送信元のアドレス（Resend でドメイン認証したもの。例：`Hinata Agency <info@hinata-agency.co.jp>`） |
 
 - 設定を変えたら、**Deployments → Redeploy** で反映します。
 - メールの設定がない間は、フォームの送信内容は Vercel のログ（Project → Logs）に出るだけで、メールは届きません。

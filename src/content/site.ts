@@ -9,12 +9,12 @@
  */
 
 export const site = {
-  name: "HINATA Entertainment",
+  name: "Hinata Agency",
   shortName: "HINATA",
   /** 公開するURL。未設定なら、Vercel で公開したときのURL（○○.vercel.app）を自動で使う */
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://hinata-ent.jp"),
+    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "https://hinata-agency.co.jp"),
   /**
    * 検索エンジンに載せるかどうか。本番公開のときに、環境変数 NEXT_PUBLIC_ALLOW_INDEX=1 を設定してください。
    * 未設定のあいだ（デモ・確認用）は、Google などの検索結果に出ないようにしています。
@@ -35,10 +35,10 @@ export const site = {
   },
 
   seo: {
-    title: "熊本・福岡・九州のライバー事務所｜TikTok LIVE特化のHINATA Entertainment",
-    titleTemplate: "%s｜HINATA Entertainment",
+    title: "熊本・福岡・九州のライバー事務所｜TikTok LIVE特化のHinata Agency",
+    titleTemplate: "%s｜Hinata Agency",
     description:
-      "熊本・福岡・九州のライバー事務所「HINATA Entertainment」。TikTok LIVEを中心に、ギフト配信・ショップ配信のライバーを募集しています。未経験OK、スマホ1台から始められて、専属マネージャーが配信をサポートします。熊本を拠点に、九州から全国へ。",
+      "熊本・福岡・九州のライバー事務所「Hinata Agency」。TikTok LIVEを中心に、ギフト配信・ショップ配信のライバーを募集しています。未経験OK、スマホ1台から始められて、専属マネージャーが配信をサポートします。熊本を拠点に、九州から全国へ。",
     keywords: [
       "ライバー事務所 熊本",
       "ライバー事務所 福岡",
@@ -49,7 +49,8 @@ export const site = {
       "TikTok LIVE ライバー事務所",
       "TikTok ライバー 募集",
       "ショップ配信 ライバー",
-      "HINATA Entertainment",
+      "Hinata Agency",
+      "ひなたエージェンシー",
     ],
   },
 
@@ -274,7 +275,7 @@ export const faq = [
 ];
 
 export const company: { label: string; value: string; link?: { label: string; href: string } }[] = [
-  { label: "事務所名", value: "HINATA Entertainment" },
+  { label: "事務所名", value: "Hinata Agency（ひなたエージェンシー）" },
   {
     label: "所在地",
     value: `〒${site.address.postalCode}\n${site.address.region}${site.address.locality}${site.address.street}\n${site.address.building}`,

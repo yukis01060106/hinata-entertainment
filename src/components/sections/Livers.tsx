@@ -26,7 +26,7 @@ export function Livers() {
               <div data-reveal="fade" style={{ "--delay": `${(i % 3) * 0.1}s` } as CSSProperties}>
                 <div className="arch relative" data-shine>
                   <div className="photo film arch aspect-[3/4]">
-                    <Image src={l.image} alt={`HINATA Entertainment 所属ライバー ${l.nameJa}（${l.nameEn}）`} fill sizes="(min-width: 1024px) 30vw, 46vw" className="object-cover" />
+                    <Image src={l.image} alt={`Hinata Agency 所属ライバー ${l.nameJa}（${l.nameEn}）`} fill sizes="(min-width: 1024px) 30vw, 46vw" className="object-cover" />
                   </div>
                 </div>
                 <p className="cap mt-4 flex justify-between">

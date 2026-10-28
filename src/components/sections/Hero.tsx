@@ -18,7 +18,7 @@ function PhotoColumn({ images, direction, preloadFirst }: { images: string[]; di
         >
           <Image
             src={src}
-            alt={i < images.length ? "HINATA Entertainment のライバー" : ""}
+            alt={i < images.length ? "Hinata Agency のライバー" : ""}
             fill
             sizes="(min-width: 1024px) 23vw, 50vw"
             preload={preloadFirst && i === 0}

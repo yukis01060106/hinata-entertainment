@@ -1,4 +1,4 @@
-# HINATA Entertainment（Xserver 用）。scripts/deploy-xserver.sh が public_html に置く。
+# Hinata Agency（Xserver 用）。scripts/deploy-xserver.sh が public_html に置く。
 
 DirectoryIndex index.html
 ErrorDocument 404 /404.html

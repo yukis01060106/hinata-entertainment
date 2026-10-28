@@ -29,7 +29,7 @@ const SHAPE = scallopPath(100, 100, 88, 14, 5);
  * HINATA の太陽ステッカー。夕焼けグラデーションの波形の円に、回転する文字。
  * （ベタ塗りの赤い円は日の丸に見えやすいので使わない）
  */
-export function SunSticker({ className = "", text = "HINATA ENT. • KUMAMOTO • TIKTOK LIVE • ", center = "LIVE", spin = true }: Props) {
+export function SunSticker({ className = "", text = "HINATA AGENCY • KUMAMOTO • TIKTOK LIVE • ", center = "LIVE", spin = true }: Props) {
   const id = useId().replace(/:/g, "");
   return (
     <svg viewBox="0 0 200 200" className={className} aria-hidden="true">
@@ -46,7 +46,10 @@ export function SunSticker({ className = "", text = "HINATA ENT. • KUMAMOTO �
       <path d={SHAPE} fill={`url(#g${id})`} />
       <g className={spin ? "sticker-spin" : undefined} style={{ transformOrigin: "100px 100px" }}>
         <text fontFamily="var(--font-dm-mono), monospace" fontSize="12.5" letterSpacing="2.4" fill="#17181d">
-          <textPath href={`#c${id}`}>{text}</textPath>
+          {/* 文字の長さが変わっても、円周（2π×64）にぴったり収まるように字間を自動調整する */}
+          <textPath href={`#c${id}`} textLength={402} lengthAdjust="spacing">
+            {text}
+          </textPath>
         </text>
       </g>
       <circle cx="78" cy="100" r="5" fill="#17181d" />

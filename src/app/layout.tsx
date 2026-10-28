@@ -60,7 +60,7 @@ const jsonLd = {
       "@type": ["Organization", "LocalBusiness"],
       "@id": `${site.url}/#organization`,
       name: site.name,
-      alternateName: ["HINATA", "ひなたエンターテインメント", "HINATA Entertainment ライバー事務所"],
+      alternateName: ["HINATA", "ひなたエージェンシー", "Hinata Agency ライバー事務所"],
       url: site.url,
       logo: `${site.url}/icon.svg`,
       image: `${site.url}/opengraph-image.jpg`,

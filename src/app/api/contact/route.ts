@@ -74,7 +74,7 @@ export async function POST(request: Request) {
     method: "POST",
     headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "HINATA Entertainment <onboarding@resend.dev>",
+      from: process.env.CONTACT_FROM_EMAIL || "Hinata Agency <onboarding@resend.dev>",
       to: to.split(",").map((s) => s.trim()),
       reply_to: body.email,
       subject: `${title}${body.company ? `${body.company} ` : ""}${body.name} 様`,
