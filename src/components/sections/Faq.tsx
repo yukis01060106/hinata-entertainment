@@ -20,7 +20,7 @@ export function Faq() {
       <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-12">
         <div className="lg:col-span-4">
           <h2 className="label" data-reveal="fade">
-          <span className="n">(06)</span>よくある質問
+          <span className="n">(07)</span>よくある質問
         </h2>
           <Split as="p" lines={["Q&A"]} className="display mt-6 text-[clamp(3.6rem,15vw,7rem)] italic" />
           <p className="mt-6 max-w-xs text-sm leading-loose text-ink/75" data-reveal="fade">

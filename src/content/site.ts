@@ -80,6 +80,7 @@ export const site = {
     { label: "About", ja: "名前の由来", href: "#about" },
     { label: "Service", ja: "事業内容", href: "#service" },
     { label: "Livers", ja: "所属ライバー", href: "#livers" },
+    { label: "Manager", ja: "マネージャー", href: "#manager" },
     { label: "Recruit", ja: "ライバー募集", href: "#recruit" },
     { label: "FAQ", ja: "よくある質問", href: "#faq" },
     { label: "Company", ja: "事務所概要", href: "#company" },
@@ -216,6 +217,27 @@ export const livers: Liver[] = [
   { nameEn: "CHIHIRO", nameJa: "ちひろ", genre: "SHOP", comment: "毎日使えるプチプラ雑貨を、使い心地まで紹介します。", image: "/images/livers/member-09.jpg" },
   { nameEn: "MIO", nameJa: "みお", genre: "GIFT", comment: "阿蘇育ち。朝の配信で、元気をおすそわけします。", image: "/images/livers/member-10.jpg" },
   { nameEn: "YUI", nameJa: "ゆい", genre: "GIFT", comment: "配信歴3か月。未経験から、毎日楽しく続けています。", image: "/images/livers/member-11.jpg" },
+];
+
+/**
+ * マネージャー紹介。配列の順番がそのまま表示順になります。
+ * image に写真のパス（例："/images/staff/nishi.jpg"、縦長 3:4）を入れると、名前のカードの代わりに写真が出ます。
+ */
+export const managers: {
+  nameJa: string;
+  nameEn: string;
+  role: string;
+  tags: string[];
+  bio: string;
+  image?: string;
+}[] = [
+  {
+    nameJa: "西",
+    nameEn: "Nishi",
+    role: "マネージャー",
+    tags: ["鹿児島県出身", "熊本大学", "楽曲提供", "企業コンサルティング"],
+    bio: "鹿児島県出身。熊本大学に進学後、歌手を目指して上京。avexのスクールに通う子どもたちへ提供した楽曲が、CMに起用される。熊本に戻ってからは、企業向けのコンサルティング事業を中心に、さまざまな事業を手がけている。",
+  },
 ];
 
 export const recruit = {

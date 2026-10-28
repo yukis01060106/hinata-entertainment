@@ -8,7 +8,7 @@ export function Contact() {
     <section id="contact" data-sky="night" className="relative px-[var(--gutter)] pt-[clamp(4rem,10vw,8rem)] pb-[clamp(6rem,14vw,10rem)]">
       <div className="mx-auto max-w-3xl">
         <h2 className="label" data-reveal="fade">
-          <span className="n">(08)</span>お問い合わせ
+          <span className="n">(09)</span>お問い合わせ
         </h2>
         <Split as="p" lines={["Contact"]} className="display mt-6 text-[clamp(3.8rem,17vw,9rem)] italic" />
         <p className="mt-6 text-sm leading-loose text-ink/80 md:text-base" data-reveal="fade">

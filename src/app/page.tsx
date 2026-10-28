@@ -4,6 +4,7 @@ import { TiktokLive } from "@/components/sections/TiktokLive";
 import { About } from "@/components/sections/About";
 import { Service } from "@/components/sections/Service";
 import { Livers } from "@/components/sections/Livers";
+import { Manager } from "@/components/sections/Manager";
 import { Recruit } from "@/components/sections/Recruit";
 import { Faq } from "@/components/sections/Faq";
 import { Company } from "@/components/sections/Company";
@@ -19,6 +20,7 @@ export default function Home() {
       <Marquee items={marquees.first} />
       <Service />
       <Livers />
+      <Manager />
       <Marquee items={marquees.second} reverse />
       <Recruit />
       <Faq />

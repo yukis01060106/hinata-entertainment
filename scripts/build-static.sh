@@ -10,7 +10,10 @@ root=$(pwd)
 tmp=$(mktemp -d)
 restore() {
   mv "$tmp/api" "$root/src/app/api" 2>/dev/null || true
-  mv "$tmp/dev-types" "$root/.next/dev/types" 2>/dev/null || true
+  # 書き出し中に開発サーバーが作り直していたら、そちらを使う（入れ子にしない）
+  if [ -d "$tmp/dev-types" ] && [ ! -e "$root/.next/dev/types" ]; then
+    mv "$tmp/dev-types" "$root/.next/dev/types"
+  fi
   rm -rf "$tmp"
 }
 trap restore EXIT
