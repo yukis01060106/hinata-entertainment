@@ -1,3 +1,4 @@
+import { Phrase } from "@/components/ui/Phrase";
 import type { Metadata } from "next";
 import { site } from "@/content/site";
 
@@ -49,7 +50,9 @@ export default function PrivacyPage() {
         <div className="mt-12 space-y-10">
           {sections.map((s) => (
             <div key={s.title}>
-              <h2 className="font-display text-xl font-bold">{s.title}</h2>
+              <h2 className="font-display text-xl font-bold">
+                <Phrase>{s.title}</Phrase>
+              </h2>
               <p className="mt-3 leading-loose whitespace-pre-line text-ink/85">{s.body}</p>
             </div>
           ))}

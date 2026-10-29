@@ -1,3 +1,4 @@
+import { Phrase } from "@/components/ui/Phrase";
 import type { CSSProperties } from "react";
 import { contact, service } from "@/content/site";
 import Link from "next/link";
@@ -20,7 +21,7 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
         <div className="mt-6 flex flex-wrap items-end justify-between gap-x-10 gap-y-6">
           <Split as="p" lines={["Service"]} className="display text-[clamp(4.6rem,22vw,15rem)] italic" />
           <p className="max-w-md font-display text-[clamp(1.1rem,4.2vw,1.6rem)] leading-relaxed font-bold whitespace-pre-line lg:pb-6" data-reveal="fade">
-            {service.lead}
+            <Phrase>{service.lead}</Phrase>
           </p>
         </div>
           </>
@@ -70,7 +71,9 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
                         >
                           <span className="font-display text-lg leading-7 font-bold text-shu">{kanji[si]}</span>
                           <div>
-                            <h4 className="font-display text-lg leading-7 font-bold">{s.title}</h4>
+                            <h4 className="font-display text-lg leading-7 font-bold">
+                              <Phrase>{s.title}</Phrase>
+                            </h4>
                             <p className="mt-2 text-sm leading-[1.95] text-ink/75">{s.body}</p>
                           </div>
                         </li>
@@ -99,7 +102,9 @@ export function Service({ no, compact = false, hideHeading = false }: { no?: str
         >
           <span>
             <span className="cap block">For business</span>
-            <span className="mt-2 block font-display text-[clamp(1.1rem,4.4vw,1.5rem)] leading-relaxed font-bold">{contact.businessNote}</span>
+            <span className="mt-2 block font-display text-[clamp(1.1rem,4.4vw,1.5rem)] leading-relaxed font-bold">
+              <Phrase>{contact.businessNote}</Phrase>
+            </span>
           </span>
           <span className="flex shrink-0 items-center gap-3 text-sm font-bold tracking-[0.14em] text-deep">
             企業の方はこちら

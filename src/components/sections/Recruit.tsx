@@ -1,3 +1,4 @@
+import { Phrase } from "@/components/ui/Phrase";
 import type { CSSProperties } from "react";
 import { recruit } from "@/content/site";
 import { Split } from "@/components/ui/Split";
@@ -33,7 +34,9 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
                 className="border-r border-b border-yoru/25 p-5 sm:p-7"
               >
                 <span className="cap">Point {String(i + 1).padStart(2, "0")}</span>
-                <p className="mt-3 font-display text-[clamp(1rem,4vw,1.6rem)] leading-snug font-bold [word-break:auto-phrase]">{pt.big}</p>
+                <p className="mt-3 font-display text-[clamp(1rem,4vw,1.6rem)] leading-snug font-bold">
+                  <Phrase>{pt.big}</Phrase>
+                </p>
                 <p className="mt-3 text-xs leading-[1.9] sm:text-sm">{pt.body}</p>
               </li>
             ))}
@@ -68,7 +71,9 @@ export function Recruit({ no, compact = false }: { no?: string; compact?: boolea
                 <li key={s.no} className="relative" data-reveal="fade" style={{ "--delay": `${i * 0.15}s` } as CSSProperties}>
                   <span aria-hidden="true" className="absolute top-1 -left-10 size-5 rounded-full border-2 border-yoru bg-daidai lg:-top-12 lg:left-0" />
                   <p className="cap">Step {s.no}</p>
-                  <p className="mt-2 font-display text-xl font-bold">{s.title}</p>
+                  <p className="mt-2 font-display text-xl font-bold">
+                    <Phrase>{s.title}</Phrase>
+                  </p>
                   <p className="mt-2 text-sm leading-[1.9]">{s.body}</p>
                 </li>
               ))}

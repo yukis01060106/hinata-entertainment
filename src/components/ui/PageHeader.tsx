@@ -1,3 +1,4 @@
+import { Phrase } from "@/components/ui/Phrase";
 import Link from "next/link";
 import { site } from "@/content/site";
 import { Split } from "@/components/ui/Split";
@@ -33,7 +34,7 @@ export function PageHeader({ path, title, en, lead }: Props) {
         </nav>
         <Split as="p" lines={[en]} className="display mt-8 text-[clamp(4.2rem,20vw,13rem)] italic" />
         <h1 className="mt-4 font-display text-[clamp(1.6rem,6vw,2.8rem)] leading-snug font-bold" data-reveal="fade">
-          {title}
+          <Phrase>{title}</Phrase>
         </h1>
         {/* lead の改行は PC だけで効かせる（スマホは自然に折り返す） */}
         <p className="mt-6 max-w-xl text-[0.95rem] leading-[2.1] text-ink/80 md:text-base" data-reveal="fade">

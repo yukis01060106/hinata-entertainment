@@ -1,3 +1,4 @@
+import { Phrase } from "@/components/ui/Phrase";
 import type { CSSProperties } from "react";
 import { tiktokLive } from "@/content/site";
 import { Split } from "@/components/ui/Split";
@@ -44,7 +45,9 @@ export function TiktokLive({ no }: { no?: string }) {
                   <span className="font-serif text-[clamp(2.6rem,8vw,3.6rem)] leading-none text-shu italic">{String(i + 1).padStart(2, "0")}</span>
                   <span className="cap">{r.en}</span>
                 </p>
-                <p className="mt-6 font-display text-[clamp(1.2rem,4.8vw,1.55rem)] leading-snug font-bold [word-break:auto-phrase] lg:text-[1.35rem]">{r.title}</p>
+                <p className="mt-6 font-display text-[clamp(1.2rem,4.8vw,1.55rem)] leading-snug font-bold lg:text-[1.35rem]">
+                  <Phrase>{r.title}</Phrase>
+                </p>
                 <p className="mt-4 text-sm leading-[2] text-ink/80">{r.body}</p>
               </li>
             ))}

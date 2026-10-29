@@ -147,6 +147,14 @@ li,
 dd {
   text-wrap: pretty;
 }
+/* 文節で改行する（Phrase コンポーネント・Split が文節の切れ目を入れる）。長すぎるときだけ文節の中でも折り返す */
+.phrase {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.split .ph {
+  white-space: nowrap;
+}
 
 /* 写真のキャプションや番号：等幅の小さな文字 */
 .cap {

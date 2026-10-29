@@ -1,3 +1,4 @@
+import { Phrase } from "@/components/ui/Phrase";
 import type { CSSProperties } from "react";
 import { faq } from "@/content/site";
 import { Split } from "@/components/ui/Split";
@@ -39,7 +40,9 @@ export function Faq({ no }: { no?: string }) {
             >
               <summary className="flex cursor-pointer list-none items-start gap-4 py-6 [&::-webkit-details-marker]:hidden">
                 <span className="font-serif text-2xl leading-7 text-shu italic">Q.</span>
-                <span className="flex-1 font-display text-[1.05rem] leading-7 font-bold sm:text-lg">{f.q}</span>
+                <span className="flex-1 font-display text-[1.05rem] leading-7 font-bold sm:text-lg">
+                  <Phrase>{f.q}</Phrase>
+                </span>
                 <span aria-hidden="true" className="relative mt-2 size-3.5 shrink-0">
                   <span className="absolute top-1/2 left-0 h-px w-full bg-ink" />
                   <span className="absolute top-0 left-1/2 h-full w-px bg-ink transition-transform duration-500 group-open:scale-y-0" />

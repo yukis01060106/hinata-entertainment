@@ -1,4 +1,5 @@
 import type { CSSProperties, ElementType } from "react";
+import { toPhrases } from "@/lib/phrase";
 
 type Props = {
   /** 1行ずつの配列。改行位置を指定したいときに使う */
@@ -30,9 +31,14 @@ export function Split({ lines, as: Tag = "p", className = "", lineClassName = "l
       <span aria-hidden="true">
         {lines.map((line, li) => (
           <span key={li} className={lineClassName}>
-            {Array.from(line).map((ch) => (
-              <span key={i} className="ch" style={{ "--i": i++ } as CSSProperties}>
-                {ch}
+            {/* 文節ごとにまとめ、文節の途中では改行しない（iPhone でも「一／番」のように切れない） */}
+            {toPhrases(line).map((ph, pi) => (
+              <span key={pi} className="ph">
+                {Array.from(ph).map((ch) => (
+                  <span key={i} className="ch" style={{ "--i": i++ } as CSSProperties}>
+                    {ch}
+                  </span>
+                ))}
               </span>
             ))}
           </span>
