@@ -1,5 +1,9 @@
 # Hinata Agency（Xserver 用）。scripts/deploy-xserver.sh が public_html に置く。
 
+# Xserver のサーバーキャッシュ設定（ドメイン追加時に Xserver が入れていたもの。そのまま残す）
+SetEnvIf Request_URI ".*" Ngx_Cache_NoCacheMode=off
+SetEnvIf Request_URI ".*" Ngx_Cache_AllCacheMode
+
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 
